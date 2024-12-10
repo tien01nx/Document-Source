@@ -1,0 +1,509 @@
+<app-client-header></app-client-header>
+<app-client-menu></app-client-menu>
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="pt-5 pb-9">
+  <div class="container-small">
+    <nav class="mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
+        <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Default</li>
+      </ol>
+    </nav>
+    <h2 class="mb-5">Kiểm tra</h2>
+    <div class="row justify-content-between">
+      <div class="col-lg-7 col-xl-7">
+        <form class="form" [formGroup]="trxTransacForm">
+          <div class="d-flex align-items-end">
+            <h3 class="mb-0 me-3">Chi tiết vận chuyển</h3>
+          </div>
+          <table class="table table-borderless mt-4">
+            <tbody>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="user"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Họ và tên</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <input
+                    class="form-control"
+                    id="fullName"
+                    type="text"
+                    formControlName="fullName"
+                    placeholder="Họ và tên"
+                  />
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['fullName'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['fullName'].errors?.['required']"
+                    >
+                      Họ và tên không được để trống
+                    </span>
+                    <span
+                      *ngIf="trxTransacForm['controls']['fullName'].errors?.['maxlength']"
+                    >
+                      Họ và tên không được vượt quá 50 ký tự
+                    </span>
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="home"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Địa chỉ</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <div style="position: relative">
+                    <textarea
+                      class="form-control"
+                      id="address"
+                      formControlName="address"
+                      placeholder="Địa chỉ giao hàng"
+                      readonly
+                      style="padding-right: 30px"
+                    ></textarea>
+                    <!-- Biểu tượng trong thẻ nhập -->
+
+                    <button
+                      data-bs-target="#modalAddress"
+                      data-bs-toggle="modal"
+                      type="button"
+                      style="
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                      "
+                    >
+                      <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="phone"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Số điện thoại</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <input
+                    class="form-control"
+                    id="phoneNumber"
+                    type="text"
+                    formControlName="phoneNumber"
+                    placeholder="Số điện thoại"
+                  />
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['phoneNumber'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['phoneNumber'].errors?.['required']"
+                    >
+                      Số điện thoại là bắt buộc
+                    </span>
+                    <span
+                      *ngIf="trxTransacForm['controls']['phoneNumber'].errors?.['maxlength']
+                  || trxTransacForm['controls']['phoneNumber'].errors?.['minlength']"
+                    >
+                      Số điện thoại phải đủ 10 số
+                    </span>
+                    <span
+                      *ngIf="!(trxTransacForm['controls']['phoneNumber'].errors?.['maxlength']
+                              || trxTransacForm['controls']['phoneNumber'].errors?.['minlength'])
+                              && trxTransacForm['controls']['phoneNumber'].errors?.['pattern']"
+                    >
+                      Số điện thoại không hợp lệ
+                    </span>
+                  </small>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <i class="fas fa-truck me-2"></i>
+                    <h5 class="lh-sm me-4">Phương thức vận chuyển</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <ng-select
+                    appendTo="body"
+                    bindLabel="carrierName"
+                    bindValue="id"
+                    [items]="shipData"
+                    formControlName="shipData"
+                    (change)="onProductSelection($event)"
+                  >
+                    <!--  (change)="onProductSelection($event, i)" -->
+                    <ng-template ng-option-tmp let-item="item">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <img
+                              *ngIf="item.carrierLogo"
+                              [src]="item.carrierLogo"
+                              alt="Product Image"
+                              class="img-fluid"
+                              style="max-width: 50px; max-height: 50px"
+                            />
+                          </div>
+                          <div class="col-md-7 text-start">
+                            <p>{{ item.carrierName }} ({{ item.service }})</p>
+                            <p>
+                              {{ item.expected }}
+                            </p>
+                          </div>
+                          <div class="col-md-3 text-start">
+                            <p>
+                              {{ item.totalAmount | number : "1.0-0" }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['shipData'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['shipData'].errors?.['required']"
+                    >
+                      Phương thức vận chuyển là bắt buộc
+                    </span>
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <i class="fa-regular fa-credit-card me-2"></i>
+                    <h5 class="lh-sm me-4">Phương thức thanh toán</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <ng-select
+                    style="height: 16px; width: 400px"
+                    [items]="paymentsType"
+                    bindValue="name"
+                    bindLabel="value"
+                    placeholder="Chọn phương thức thanh toán"
+                    formControlName="paymentTypes"
+                  ></ng-select>
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['paymentTypes'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['paymentTypes'].errors?.['required']"
+                    >
+                      Phương thức thanh toán là bắt buộc
+                    </span>
+                  </small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr class="my-6" />
+
+          <div class="row g-2 mb-5 mb-lg-0">
+            <div class="col-md-8 col-lg-9 d-grid">
+              <button
+                class="btn btn-primary"
+                type="submit"
+                [disabled]="trxTransacForm.invalid || !isDisplayNone"
+                (click)="submit()"
+              >
+                <span>{{ titleStatus }}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5 col-xl-5">
+        <div class="card mt-3 mt-lg-0">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h3 class="mb-0">Chi tiết đơn hàng</h3>
+              <!-- <button class="btn btn-link pe-0" type="button">Edit cart</button> -->
+            </div>
+            <div class="border-dashed border-bottom border-translucent mt-4">
+              <!-- Nếu shoppingcartdto.cart không có dữ liệu thì lấy dữ liệu từ transactiondetail đổ ra -->
+              <div
+                *ngIf="
+                  shoppingcartdto && shoppingcartdto.transactionDetail;
+                  then transactiondetail;
+                  else cartdetail
+                "
+              >
+                This content is not shown
+              </div>
+
+              <ng-template #cartdetail>
+                <div *ngFor="let item of shoppingcartdto.cart">
+                  <div class="row align-items-center mb-2 g-3">
+                    <div class="col-8 col-md-7 col-lg-8">
+                      <div class="d-flex align-items-center">
+                        <img
+                          class="me-2 ms-1"
+                          src="{{ Environment.apiBaseRoot }}/{{
+                            item.productImage
+                          }}"
+                          width="40"
+                          alt=""
+                        />
+                        <h6 class="fw-semibold text-body-highlight lh-base">
+                          {{ item.product.productName }}
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="col-2 col-md-3 col-lg-2">
+                      <h6 class="fs-10 mb-0">
+                        {{ item.quantity }}
+                      </h6>
+                    </div>
+                    <div class="col-2 ps-0">
+                      <h5 class="mb-0 fw-semibold text-end">
+                        {{ item.quantity * item.price | number : "1.0-0" }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template #transactiondetail>
+                <div *ngFor="let item of shoppingcartdto.transactionDetail">
+                  <div class="row align-items-center mb-2 g-3">
+                    <div class="col-8 col-md-7 col-lg-8">
+                      <div class="d-flex align-items-center">
+                        <img
+                          class="me-2 ms-1"
+                          src="{{ Environment.apiBaseRoot }}/{{
+                            item.productImage
+                          }}"
+                          width="40"
+                          alt=""
+                        />
+                        <h6 class="fw-semibold text-body-highlight lh-base">
+                          {{ item.product.productName }}
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="col-2 col-md-3 col-lg-2">
+                      <h6 class="fs-10 mb-0">
+                        {{ item.quantity }}
+                      </h6>
+                    </div>
+                    <div class="col-2 ps-0">
+                      <h5 class="mb-0 fw-semibold text-end">
+                        {{ item.quantity * item.price | number : "1.0-0" }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <div
+              class="d-flex justify-content-between"
+              *ngIf="priceDiscount > 0"
+            >
+              <p class="text-body fw-semibold">Giảm giá :</p>
+              <p class="text-danger fw-semibold">
+                {{ priceDiscount | number : "1.0-0" }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="text-body fw-semibold">Phí vận chuyển:</p>
+              <p class="fw-semibold">
+                {{ priceShip | number : "1.0-0" }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between border-dashed-y pt-3">
+              <h4 class="mb-0">Tổng tiền :</h4>
+              <h4 class="mb-0">{{ getTotalPrice() | number : "1.0-0" }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+<!-- ============================================-->
+<app-client-footer></app-client-footer>
+<div class="modal fade" id="modalAddress" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAddressLabel">
+          Thông tin địa chỉ nhận hàng
+        </h5>
+        <button
+          class="btn p-1"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #btnCloseModal
+        >
+          <span class="fas fa-times fs-9"></span>
+        </button>
+      </div>
+      <form class="form" [formGroup]="addressForm" (ngSubmit)="onAddress()">
+        <!-- [formGroup]="categoryForm" (submit)="onSubmit()" -->
+        <div class="modal-body">
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label fs-9" for="parentID"
+              >Tỉnh/Thành phố<sup class="text-danger">*</sup></label
+            >
+            <div class="col-sm-8">
+              <ng-select placeholder="Tỉnh/Thành phố" formControlName="city">
+                <ng-option *ngFor="let city of Utils.city" [value]="city.id">
+                  {{ city.name }}
+                </ng-option>
+              </ng-select>
+              <div
+                class="label-error mt-1"
+                *ngIf="addressForm['controls']['city'].dirty"
+              >
+                <div
+                  *ngIf="addressForm.get('city')?.hasError('required')"
+                  class="text-danger"
+                >
+                  <small>Trường bắt buộc.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label fs-9" for="categoryLevel"
+              >Quận/Huyện<sup class="text-danger">*</sup></label
+            >
+            <div class="col-sm-8">
+              <ng-select placeholder="Quận/Huyện" formControlName="district">
+                <ng-option
+                  *ngFor="let district of districts"
+                  [value]="district.id"
+                >
+                  {{ district.name }}
+                </ng-option>
+              </ng-select>
+              <div
+                class="label-error mt-1"
+                *ngIf="addressForm['controls']['district'].dirty"
+              >
+                <span
+                  *ngIf="addressForm['controls']['district'].errors?.['required']"
+                >
+                  <small class="text-danger">Trường bắt buộc.</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label fs-9" for="categoryName"
+              >Phường/Xã/Thị trấn <sup class="text-danger">*</sup></label
+            >
+            <div class="col-sm-8">
+              <ng-select
+                placeholder="Phường/Xã/Thị trấn"
+                formControlName="ward"
+              >
+                <ng-option *ngFor="let ward of wards" [value]="ward.id">
+                  {{ ward.name }}
+                </ng-option>
+              </ng-select>
+              <div
+                class="label-error mt-1"
+                *ngIf="addressForm['controls']['ward'].dirty"
+              >
+                <span
+                  *ngIf="addressForm['controls']['ward'].errors?.['required']"
+                >
+                  <small class="text-danger">Trường bắt buộc.</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label fs-9" for="categoryName"
+              >Số nhà, Tên đường <sup class="text-danger">*</sup></label
+            >
+            <div class="col-sm-8">
+              <input
+                class="form-control"
+                id="address"
+                type="text"
+                placeholder="Số nhà, Tên đường"
+                formControlName="addressDetail"
+              />
+              <div
+                class="label-error mt-1 text-danger"
+                *ngIf="addressForm['controls']['addressDetail'].dirty"
+              >
+                <span
+                  *ngIf="addressForm['controls']['addressDetail'].errors?.['required']"
+                >
+                  <small>Trường bắt buộc.</small>
+                </span>
+                <span
+                  *ngIf="addressForm['controls']['addressDetail'].errors?.['maxlength']"
+                >
+                  <small>Tối đa 100 ký tự.</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="addressForm.invalid"
+          >
+            <span>Lưu</span>
+          </button>
+
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            data-bs-dismiss="modal"
+          >
+            Quay lại
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

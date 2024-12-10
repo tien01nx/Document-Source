@@ -1,0 +1,293 @@
+<section class="pt-5 pb-9">
+  <div class="container-small">
+    <nav class="mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Đặt hàng</li>
+      </ol>
+    </nav>
+    <h2 class="mb-5">Đặt hàng</h2>
+    <div class="row justify-content-between">
+      <div class="col-lg-7 col-xl-7">
+        <form [formGroup]="orderForm" (submit)="onSubmit()">
+          <div class="d-flex align-items-end">
+            <h4 class="mb-0 me-3">Chi tiết giao hàng</h4>
+            <button class="btn btn-link p-0" type="button" data-bs-toggle="modal" data-bs-target="#tooltipModal2" (click)="openModal()">Thay
+              đổi</button>
+          </div>
+          <table class="table table-borderless mt-4">
+            <tbody>
+              <tr>
+                <td class="py-2 ps-0" style="width: 30%;">
+                  <div class="d-flex">
+                    <span class="fs-3 me-3" data-feather="user" style="height:16px; width:16px;"></span>
+                    <h5 class="lh-sm me-4">Người nhận</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm" style="width: 5%;">:</td>
+                <td class="py-2 px-3">
+                  <h5 class="lh-sm fw-normal text-body-secondary">{{profile?.name}}</h5>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0" style="width: 30%;">
+                  <div class="d-flex">
+                    <span class="fs-3 me-3" data-feather="phone" style="height:16px; width:16px;"></span>
+                    <h5 class="lh-sm me-4">Số điện thoại</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm" style="width: 5%;">: </td>
+                <td class="py-2 px-3">
+                  <h5 class="lh-sm fw-normal text-body-secondary">{{profile?.phone || "Trống"}}</h5>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0" style="width: 30%;">
+                  <div class="d-flex">
+                    <span class="fs-3 me-3" data-feather="home" style="height:16px; width:16px;"></span>
+                    <h5 class="lh-sm me-4">Địa chỉ nhận hàng</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm" style="width: 5%;">:</td>
+                <td class="py-2 px-3">
+                  <h5 class="lh-lg fw-normal text-body-secondary" *ngIf="profile?.city !== null">
+                    {{ profile?.addressDetail }}, {{ profile?.ward }}, {{ profile?.district }}, {{profile?.city }}</h5>
+                  <h5 class="lh-lg fw-normal text-body-secondary" *ngIf="profile?.city === null">Trống</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <h4 class="mb-5">Phương thức thanh toán</h4>
+          <div class="row gy-6">
+            <div class="col-12 col-md-6">
+              <div class="d-flex flex-wrap align-items-center mb-3">
+                <div class="form-check mb-0">
+                  <input class="form-check-input" id="0" type="radio" name="paymentMethod" value="0" formControlName="paymentMethod"/>
+                  <label class="form-check-label fs-8 text-body" for="0">Thanh toán khi nhận hàng (COD)</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="d-flex flex-wrap align-items-center mb-3">
+                <div class="form-check mb-0">
+                  <input class="form-check-input" id="1" type="radio" name="paymentMethod" value="1" formControlName="paymentMethod"/>
+                  <label class="form-check-label fs-8 text-body me-3" for="1">Ví điện tử VNPAY</label>
+                </div>
+                <img class="h-100 me-2 ms-4 ms-md-0" src="../../../assets/Icon-VNPAY-QR.webp"
+                  style="width: 30px; height: 30px;" alt="" />
+              </div>
+            </div>
+          </div>
+          <hr>
+          <h4 class="mb-5">Phương thức vận chuyển</h4>
+          <div class="row gy-4">
+            <div class="col-12 col-md-6" *ngFor="let item of shippingUnits">
+              <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                <div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" formControlName="carrier_name" id="{{item?.id}}" type="radio" name="carrier_name" value="{{item?.carrier_name}}" 
+                    (change)="onChooseshippingUnit(item)"/>
+                    <label class="form-check-label fs-8 text-body me-3" for="{{item?.id}}">{{item?.carrier_name}}</label>
+                  </div>
+                  <div class="ps-4">
+                    <h6 class="fw-normal text-body-tertiary mb-2">Loại: {{item?.service}}</h6>
+                    <h6 class="fw-normal text-body-tertiary mb-2">{{item?.expected}}</h6>
+                    <h6 class="text-info lh-base mb-0">{{item?.total_fee | currencyFormat:'VND'}}</h6>
+                  </div>
+                </div>
+                <img class="h-100 me-2 ms-4 ms-md-0" src="{{item?.carrier_logo}}"
+                  style="width: 90px; height: 90px;" alt="" />
+              </div>
+            </div>
+          </div>
+          <hr class="mt-5">
+          <h4 class="mb-5">Ghi chú</h4>
+          <div class="row g-2 mb-5">
+            <div class="col-md-12 col-lg-12 d-grid">
+              <textarea class="form-control p-3" name="note" id="" cols="30" rows="2"
+                placeholder="Nhập ghi chú..." formControlName="note"></textarea>
+            </div>
+            <div class="label-error mt-1" *ngIf="orderForm['controls']['note'].dirty">
+              <div *ngIf="orderForm.get('note')?.hasError('maxlength')" class="text-danger">
+                <small>Ghi chú không được vượt quá 100 ký tự.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row g-2 mb-5 mb-lg-0">
+            <div class="col-md-12 col-lg-12 d-grid">
+              <button class="btn btn-primary" type="submit" [disabled]="orderForm.invalid">Đặt hàng</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5 col-xl-5">
+        <div class="card mt-3 mt-lg-0">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h4 class="mb-0">Đơn hàng</h4>
+            </div>
+            <div class="border-dashed border-bottom border-translucent mt-4 pb-3">
+              <div class="ms-n2">
+                <div class="row align-items-center mb-2 g-3" *ngFor="let item of selectedProducts">
+                  <div class="col-7 col-md-7 col-lg-7">
+                    <div class="d-flex align-items-center">
+                      <img class="me-2 ms-1" src="{{baseUrl}}/images/{{item?.productThumbnail}}" width="40" alt="" />
+                      <h6 class="fw-semibold text-body-highlight lh-base">{{item?.productName}}<br>
+                        <span class="fs-9 fw-semibold" *ngIf="item.salePrice === null">{{item.productPrice | currencyFormat:'VND'}}</span>
+                        <span class="fs-9" *ngIf="item.salePrice !== null">
+                          <del>{{item.productPrice | currencyFormat:'VND'}}</del>
+                          <span class="ms-2 text-danger-dark fw-semibold">{{item.salePrice | currencyFormat:'VND'}}</span>
+                        </span>
+                        <br>
+                        <span class="fs-9 text-black-50">{{item?.productColor}} - {{item?.productSize}}</span>
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="col-2 col-md-2 col-lg-2">
+                    <h6 class="fs-9 mb-0">x{{item?.quantity}}</h6>
+                  </div>
+                  <div class="col-3 col-md-3 col-lg-3 ps-0">
+                    <h6 class="mb-0 fw-semibold text-end"*ngIf="item.salePrice === null">{{item.totalPrice | currencyFormat:'VND'}}</h6>
+                    <h6 class="mb-0 fw-semibold text-end"*ngIf="item.salePrice !== null">{{item.totalSalePrice | currencyFormat:'VND'}}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="border-dashed border-bottom border-translucent mt-4">
+              <div class="d-flex justify-content-between mb-2">
+                <h5 class="text-body fw-semibold">Tổng tiền hàng ({{totalQuantity}} sản phẩm) :</h5>
+                <h5 class="text-body-emphasis fw-semibold">{{totalPrice | currencyFormat: 'VND'}}</h5>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <h5 class="text-body fw-semibold">Phí vận chuyển :</h5>
+                <h5 class="text-body-emphasis fw-semibold">{{ shippingCost | currencyFormat: 'VND'}}</h5>
+              </div>
+              <div *ngIf="totalDiscount > 0" class="d-flex justify-content-between mb-3">
+                <h5 class="text-body fw-semibold">Khuyến mãi :</h5>
+                <h5 class="text-danger fw-semibold">- {{ totalDiscount | currencyFormat: 'VND'}}</h5>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between border-dashed-y pt-3">
+              <h4 class="mb-0">Thành tiền :</h4>
+              <h4 class="mb-0">{{totalPrice + shippingCost - totalDiscount | currencyFormat: 'VND'}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end of .container-->
+</section>
+
+<div class="modal fade" id="tooltipModal2" tabindex="-1" aria-labelledby="tooltipModalLabel" style="display: none;"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tooltipModalLabel">Thông tin nhận hàng</h5>
+        <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close" (click)="resetText()">
+          <span class="fas fa-times fs-9"></span>
+        </button>
+      </div>
+      <form [formGroup]="shippingForm" (submit)="onSubmitShippingForm()">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label class="form-label">Người nhận</label>
+                <span class="text-danger"> *</span>
+                <input class="form-control" id="name" type="text" placeholder="Người nhận" formControlName="name" />
+                <div class="label-error mt-1" *ngIf="shippingForm['controls']['name'].dirty">
+                  <span *ngIf="shippingForm['controls']['name'].errors?.['required']">
+                    <small>Trường bắt buộc.</small>
+                  </span>
+                  <span *ngIf="shippingForm['controls']['name'].errors?.['maxlength']">
+                    <small>Tối đa 30 ký tự.</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label class="form-label">Số điện thoại</label>
+                <span class="text-danger"> *</span>
+                <input class="form-control" id="phone" type="text" placeholder="Số điện thoại"
+                  formControlName="phone" />
+                <div class="label-error mt-1" *ngIf="shippingForm['controls']['phone'].dirty">
+                  <span *ngIf="shippingForm['controls']['phone'].errors?.['required']">
+                    <small>Trường bắt buộc.</small>
+                  </span>
+                  <span *ngIf="shippingForm['controls']['phone'].errors?.['pattern']">
+                    <small>Số điện thoại không đúng định dạng.</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tỉnh/Thành phố</label><span class="text-danger">
+              *</span>
+            <ng-select placeholder="Tỉnh/Thành phố" formControlName="city">
+              <ng-option *ngFor="let city of cities2" [value]="city.name">
+                {{ city.name }}
+              </ng-option>
+            </ng-select>
+            <div class="label-error mt-1" *ngIf="shippingForm['controls']['city'].dirty">
+              <div *ngIf="shippingForm.get('city')?.hasError('required')" class="text-danger">
+                <small>Trường bắt buộc.</small>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Quận/Huyện</label>
+            <span class="text-danger"> *</span>
+            <ng-select placeholder="Quận/Huyện" formControlName="district">
+              <ng-option *ngFor="let district of districts" [value]="district.name">
+                {{ district.name }}
+              </ng-option>
+            </ng-select>
+            <div class="label-error mt-1" *ngIf="shippingForm['controls']['district'].dirty">
+              <span *ngIf="shippingForm['controls']['district'].errors?.['required']">
+                <small>Trường bắt buộc.</small>
+              </span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phường/Xã/Thị trấn</label>
+            <span class="text-danger"> *</span>
+            <ng-select placeholder="Phường/Xã/Thị trấn" formControlName="ward">
+              <ng-option *ngFor="let ward of wards" [value]="ward.name">
+                {{ ward.name }}
+              </ng-option>
+            </ng-select>
+            <div class="label-error mt-1" *ngIf="shippingForm['controls']['ward'].dirty">
+              <span *ngIf="shippingForm['controls']['ward'].errors?.['required']">
+                <small>Trường bắt buộc.</small>
+              </span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Số nhà, Tên đường </label>
+            <span class="text-danger"> *</span>
+            <input class="form-control" id="address" type="text" placeholder="Số nhà, Tên đường"
+              formControlName="addressDetail" />
+            <div class="label-error mt-1" *ngIf="shippingForm['controls']['addressDetail'].dirty">
+              <span *ngIf="shippingForm['controls']['addressDetail'].errors?.['required']">
+                <small>Trường bắt buộc.</small>
+              </span>
+              <span *ngIf="shippingForm['controls']['addressDetail'].errors?.['maxlength']">
+                <small>Tối đa 100 ký tự.</small>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit" [disabled]="shippingForm.invalid">Chọn</button>
+          <button class="btn btn-outline-primary" type="button" [disabled]="shippingForm.invalid" (click)="saveInfo()">Lưu</button>
+          <button class="btn btn-phoenix-secondary" type="button" data-bs-dismiss="modal" #btnCloseModal
+            (click)="resetText()">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<nav class="mb-2" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a [routerLink]="['/admin']">Trang chủ</a></li>
+    <li class="breadcrumb-item active">Báo cáo nhập hàng</li>
+  </ol>
+</nav>
+<div class="mb-9">
+  <div class="row g-2 mb-4">
+    <div class="col-auto">
+      <h2 class="mb-0">Báo cáo nhập hàng</h2>
+    </div>
+  </div>
+  <div>
+    <div class="mb-4">
+      <div class="row g-3">
+        <div class="col-auto">
+          <select class="form-select me-2" (change)="onYearSelect($event)" [(ngModel)]="chooseYear">
+            <option *ngFor="let item of years" [value]="item">{{ item }}</option>
+          </select>
+        </div>
+        <div class="col-auto scrollbar overflow-hidden-y flex-grow-1">
+          <div class="btn-group position-static" role="group">
+            <div class="btn-group position-static" role="group">
+              <button class="btn btn-phoenix-success flex-shrink-0 ps-3 pe-3" (click)="exportReceiptReport()">
+                <i class="fas fa-file-excel me-2"></i>Xuất báo cáo</button>
+            </div>
+            <div class="btn-group position-static" role="group">
+              <button class="btn btn-phoenix-secondary flex-shrink-0 ps-3 pe-3" (click)="clearAllParams()">
+                <span class="fas fa-redo me-2"></span>Làm mới</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 px-lg-6 bg-body-emphasis border border-translucent position-relative top-1">
+      <div class="table-responsive scrollbar-overlay mx-n1 px-1">
+        <table class="table table-sm fs-9 mb-0">
+          <thead>
+            <tr>
+              <th class="sort align-middle pe-5 text-start pb-3 pt-3 ps-0" scope="col" style="width:20%;"
+                nowrap>
+                THÁNG
+              </th>
+              <th class="sort align-middle pe-5" scope="col" style="width:20%;" nowrap>
+                NĂM
+              </th>
+              <th class="sort align-middle pe-5" scope="col" style="width:20%;" nowrap>
+                TỔNG SỐ LƯỢNG NHẬP
+              </th>
+              <th class="sort align-middle pe-5 text-end" scope="col" style="width:40%;" nowrap>
+                TỔNG TIỀN NHẬP
+              </th>
+              <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="list">
+            <tr class="hover-actions-trigger btn-reveal-trigger position-static" *ngFor="let item of dataReport">
+              <td class="align-middle white-space-nowrap pe-5 text-truncate pt-3 pb-3 ps-0 fw-semibold ">
+                {{item.month}}
+              </td>
+              <td class="align-middle white-space-nowrap pe-5 text-truncate fw-semibold">
+                {{item.year}}
+              </td>
+              <td class="align-middle white-space-nowrap pe-5 text-truncate fw-bold" [class.text-danger]="item.totalQuantityReceipt == 0">
+                {{item.totalQuantityReceipt}}
+              </td>
+              <td class="align-middle white-space-nowrap pe-5 text-truncate fw-semibold text-end" [class.text-danger]="item.totalQuantityReceipt == 0">
+                {{item.totalMoneyReceipt | currencyFormat:'VND'}}
+              </td>
+              <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+                <span *ngIf="item.totalQuantityReceipt > 0">
+                  <a class="text-primary" (click)="getDetail(item.month, item.year)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopDetailReceipt" aria-controls="offcanvasTop">
+                    <span class="fas fa-info-circle text-primary"></span> 
+                    <span class="ms-2 text-primary">Chi tiết</span>
+                  </a>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
+        <div class="col-auto d-flex mt-1">
+          <div class="col-auto d-flex align-items-center">
+            <p class="mb-0 me-3 pb-2 pt-2 fw-semibold text-body">
+              Hiển thị thống kê nhập hàng 12 tháng năm {{chooseYear}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Offcanvas-->
+<div class="offcanvas offcanvas-top" style="height: fit-content;" id="offcanvasTopDetailReceipt" tabindex="-1" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">Danh sách sản phẩm nhập vào tháng {{detailMonth}} năm {{detailYear}} </h5><button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <table class="table table-sm fs-9 mb-0">
+        <thead>
+          <tr>
+            <th class="align-middle pe-5 text-start pb-3 pt-3" scope="col" style="width:5%;" nowrap>
+              STT
+            </th>
+            <th class="sort align-middle pe-5 text-start pb-3 pt-3" scope="col" style="width:10%;" nowrap>
+              MÃ CHI TIẾT SẢN PHẨM
+            </th>
+            <th class="sort align-middle pe-5 text-start pb-3 pt-3" scope="col" style="width:35%;" nowrap>
+              TÊN SẢN PHẨM
+            </th>
+            <th class="sort align-middle pe-5 text-start pb-3 pt-3" scope="col" style="width:15%;" nowrap>
+              MÀU SẮC
+            </th>
+            <th class="sort align-middle pe-5 text-start pb-3 pt-3" scope="col" style="width:10%;" nowrap>
+              KÍCH CỠ
+            </th>
+            <th class="sort align-middle pe-5 text-start pb-3 pt-3" scope="col" style="width:10%;" nowrap>
+              SỐ LƯỢNG NHẬP
+            </th>
+            <th class="sort align-middle pe-3 pb-3 pt-3 text-end" scope="col" style="width:20%;">
+              TỔNG TIỀN NHẬP
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataDetail; let i = index">
+            <td class="pt-2 pb-2">
+              <div class="form-control">
+                {{ i + 1 }}
+              </div>
+            </td>
+            <td class="pt-2 pb-2">
+              <div class="form-control">
+                {{ item?.id }}
+              </div>
+            </td>
+            <td class="pt-2 pb-2">
+              <div class="form-control">
+                {{ item?.name }}
+              </div>
+            </td>
+            <td class="pt-2 pb-2">
+              <div class="form-control">
+                {{ item?.color }}
+              </div>
+            </td>
+            <td class="pt-2 pb-2">
+              <div class="form-control">
+                {{ item?.size }}
+              </div>
+            </td>
+            <td class="pt-2 pb-2">
+              <div class="form-control">
+                {{ item?.totalQuantity }}
+              </div>
+            </td>
+            <td class="pt-2 pb-2">
+              <div class="form-control text-success text-end">
+                {{ item?.totalMoney | currencyFormat:'VND'}}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-end mt-4">
+        <div>
+          <button #btnCloseOffcanvas class="btn btn-phoenix-secondary" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+            Quay lại
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

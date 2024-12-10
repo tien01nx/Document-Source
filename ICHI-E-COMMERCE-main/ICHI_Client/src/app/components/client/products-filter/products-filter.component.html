@@ -1,0 +1,335 @@
+<app-client-header></app-client-header>
+<app-client-menu></app-client-menu>
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="pt-5 pb-9">
+  <div class="product-filter-container">
+    <button
+      class="btn btn-sm btn-phoenix-secondary text-body-tertiary mb-5 d-lg-none"
+      data-phoenix-toggle="offcanvas"
+      data-phoenix-target="#productFilterColumn"
+    >
+      <span class="fas fa-filter me-2"></span>Filter
+    </button>
+    <div class="row">
+      <div class="col-lg-3 col-xxl-2 ps-2 ps-xxl-3">
+        <div
+          class="product-filter-offcanvas bg-body scrollbar phoenix-offcanvas phoenix-offcanvas-fixed"
+          id="productFilterColumn"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Filters</h3>
+            <button class="btn d-lg-none p-0" data-phoenix-dismiss="offcanvas">
+              <span class="uil uil-times fs-8"></span>
+            </button>
+          </div>
+
+          <a
+            class="btn px-0 d-block collapse-indicator"
+            data-bs-toggle="collapse"
+            href="#collapseBrands"
+            role="button"
+            aria-expanded="true"
+            aria-controls="collapseBrands"
+          >
+            <div
+              class="d-flex align-items-center justify-content-between w-100"
+            >
+              <div class="fs-8 text-body-highlight">Loại sản phẩm</div>
+              <span
+                class="fas fa-angle-down toggle-icon text-body-quaternary"
+              ></span>
+            </div>
+          </a>
+          <div class="collapse show" id="collapseBrands">
+            <div
+              class="form-check mb-0"
+              *ngFor="let item of categories; let i = index"
+            >
+              <input
+                class="form-check-input mt-0"
+                id="flexCheckCategories{{ i }}"
+                type="checkbox"
+                name="category-parent"
+                [value]="item.categoryName"
+                (change)="filter('category-parent', $event)"
+              />
+              <label
+                class="form-check-label d-block lh-sm fs-8 text-body fw-normal mb-0"
+                [for]="'flexCheckCategories' + i"
+                >{{ item.categoryName }}</label
+              >
+            </div>
+          </div>
+
+          <a
+            class="btn px-0 d-block collapse-indicator"
+            data-bs-toggle="collapse"
+            href="#collapseColorFamily"
+            role="button"
+            aria-expanded="true"
+            aria-controls="collapseColorFamily"
+          >
+            <div
+              class="d-flex align-items-center justify-content-between w-100"
+            >
+              <div class="fs-8 text-body-highlight">Màu sắc</div>
+              <span
+                class="fas fa-angle-down toggle-icon text-body-quaternary"
+              ></span>
+            </div>
+          </a>
+          <div class="collapse show" id="collapseColorFamily">
+            <div class="mb-2">
+              <div
+                class="form-check mb-0"
+                *ngFor="let item of colors.slice(0, 6); let i = index"
+              >
+                <input
+                  class="form-check-input mt-0"
+                  id="flexCheckColor{{ i }}"
+                  type="checkbox"
+                  name="color"
+                  [value]="item.name"
+                  (change)="filter('colors', $event)"
+                />
+                <label
+                  class="form-check-label d-block lh-sm fs-8 text-body fw-normal mb-0"
+                  [for]="'flexCheckColor' + i"
+                  >{{ item.name }}</label
+                >
+              </div>
+            </div>
+          </div>
+          <a
+            class="btn px-0 d-block collapse-indicator"
+            data-bs-toggle="collapse"
+            href="#collapseBrands"
+            role="button"
+            aria-expanded="true"
+            aria-controls="collapseBrands"
+          >
+            <div
+              class="d-flex align-items-center justify-content-between w-100"
+            >
+              <div class="fs-8 text-body-highlight">Thương hiệu</div>
+              <span
+                class="fas fa-angle-down toggle-icon text-body-quaternary"
+              ></span>
+            </div>
+          </a>
+          <div class="collapse show" id="collapseBrands">
+            <div
+              class="form-check mb-0"
+              *ngFor="let item of trademarks; let i = index"
+            >
+              <input
+                class="form-check-input mt-0"
+                id="flexCheckTrademark{{ i }}"
+                type="checkbox"
+                name="trademark"
+                [value]="item.trademarkName"
+                (change)="filter('trademark', $event)"
+              />
+              <label
+                class="form-check-label d-block lh-sm fs-8 text-body fw-normal mb-0"
+                [for]="'flexCheckTrademark' + i"
+                >{{ item.trademarkName }}</label
+              >
+            </div>
+          </div>
+          <a
+            class="btn px-0 d-block collapse-indicator"
+            data-bs-toggle="collapse"
+            href="#collapsePriceRange"
+            role="button"
+            aria-expanded="true"
+            aria-controls="collapsePriceRange"
+          >
+            <div
+              class="d-flex align-items-center justify-content-between w-100"
+            >
+              <div class="fs-8 text-body-highlight">Giá</div>
+              <span
+                class="fas fa-angle-down toggle-icon text-body-quaternary"
+              ></span>
+            </div>
+          </a>
+          <div class="collapse show" id="collapsePriceRange">
+            <div class="d-flex justify-content-between mb-3">
+              <div class="input-group me-2">
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="Nhỏ nhất"
+                  name="valueFilterPriceMin"
+                  [(ngModel)]="valueFilterPriceMin"
+                  appOnlyNumberFloatDirective
+                /><input
+                  class="form-control"
+                  type="number"
+                  placeholder="Lớn nhất"
+                  name="valueFilterPriceMax"
+                  [(ngModel)]="valueFilterPriceMax"
+                  appOnlyNumberFloatDirective
+                />
+              </div>
+              <button
+                class="btn btn-phoenix-primary px-3"
+                type="button"
+                (click)="filterPrice()"
+              >
+                Tìm kiếm
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="phoenix-offcanvas-backdrop d-lg-none"
+          data-phoenix-backdrop
+        ></div>
+      </div>
+      <div class="col-lg-9 col-xxl-10">
+        <div class="row gx-3 gy-6 mb-8">
+          <div
+            class="col-12 col-sm-6 col-md-4 col-xxl-2"
+            *ngFor="let item of paginationDTO.content"
+          >
+            <div class="product-card-container h-100">
+              <div
+                class="position-relative text-decoration-none product-card h-100"
+              >
+                <div class="d-flex flex-column justify-content-between h-100">
+                  <div>
+                    <div
+                      class="border border-1 border-translucent rounded-3 position-relative mb-3"
+                    >
+                      <button
+                        class="btn rounded-circle p-0 d-flex flex-center btn-wish z-2 d-toggle-container btn-outline-primary"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Add to wishlist"
+                      >
+                        <span class="fas fa-heart d-block-hover"></span
+                        ><span class="far fa-heart d-none-hover"></span></button
+                      ><img
+                        class="img-fluid"
+                        src="{{
+                          Environment.apiBaseRoot +
+                            '/' +
+                            item.productImages[0].imagePath
+                        }}"
+                        alt=""
+                      />
+                    </div>
+                    <a
+                      class="stretched-link"
+                      (click)="productDetail(item.product.id)"
+                    >
+                      <h6 class="mb-2 lh-sm line-clamp-3 product-name">
+                        {{ item.product.productName }}
+                      </h6>
+                    </a>
+                    <!-- <p class="fs-9">
+                      <span class="fa fa-star text-warning"></span
+                      ><span class="fa fa-star text-warning"></span
+                      ><span class="fa fa-star text-warning"></span
+                      ><span class="fa fa-star text-warning"></span
+                      ><span class="fa fa-star text-warning"></span
+                      ><span class="text-body-quaternary fw-semibold ms-1"
+                        >(67 people rated)</span
+                      >
+                    </p> -->
+                  </div>
+                  <div>
+                    <!-- <p class="fs-9 text-body-tertiary mb-2">
+                      dbrand skin available
+                    </p> -->
+                    <div class="d-flex align-items-center mb-1">
+                      <!-- <p
+                        class="me-2 text-body text-decoration-line-through mb-0"
+                      >
+                        $125.00
+                      </p> -->
+                      <h4 class="text-body-emphasis mb-0">
+                        {{ item.product.price | currencyFormat }}
+                      </h4>
+                    </div>
+                    <!-- <p class="text-body-tertiary fw-semibold fs-9 lh-1 mb-0">
+                      2 colors
+                    </p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center py-2 pe-0 fs--1">
+          <div class="col-auto ms-auto d-flex">
+            <button
+              type="button"
+              class="page-link"
+              (click)="changePageNumber(1)"
+              [class.disabled]="paginationDTO.pageNumber <= 1"
+            >
+              <span class="fas fa-angle-double-left"></span>
+            </button>
+            <button
+              type="button"
+              class="page-link"
+              (click)="changePageNumber(paginationDTO.pageNumber - 1)"
+              [class.disabled]="paginationDTO.pageNumber <= 1"
+            >
+              <span class="fas fa-angle-left"></span>
+            </button>
+            <ul class="mb-0 pagination">
+              <li
+                class="page-item"
+                *ngFor="
+                  let i of Utils.getVisiblePages(
+                    paginationDTO.pageNumber,
+                    paginationDTO.totalPages,
+                    5
+                  )
+                "
+                [class.active]="i === paginationDTO.pageNumber"
+              >
+                <button
+                  type="button"
+                  class="page-link"
+                  (click)="changePageNumber(i)"
+                >
+                  {{ i }}
+                </button>
+              </li>
+            </ul>
+            <button
+              type="button"
+              class="page-link"
+              (click)="changePageNumber(paginationDTO.pageNumber + 1)"
+              [class.disabled]="
+                paginationDTO.pageNumber >= paginationDTO.totalPages
+              "
+            >
+              <span class="fas fa-angle-right"></span>
+            </button>
+            <button
+              type="button"
+              class="page-link"
+              (click)="changePageNumber(paginationDTO.totalPages)"
+              [class.disabled]="
+                paginationDTO.pageNumber >= paginationDTO.totalPages
+              "
+            >
+              <span class="fas fa-angle-double-right"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+<!-- ============================================-->
+<app-client-footer></app-client-footer>

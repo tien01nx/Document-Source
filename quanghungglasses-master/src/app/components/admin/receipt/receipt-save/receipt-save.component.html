@@ -1,0 +1,175 @@
+<nav class="mb-2" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+    <li class="breadcrumb-item">Quản lý hóa đơn nhập</li>
+    <li class="breadcrumb-item active">{{ titleString }}</li>
+  </ol>
+</nav>
+<form class="mb-9" [formGroup]="receiptForm" enctype="multipart/form-data" (submit)="onSubmit()">
+  <div class="row g-3 flex-between-end mb-5">
+    <div class="col-auto">
+      <h2 class="mb-2">{{ titleString }}</h2>
+    </div>
+  </div>
+  <div class="row g-5">
+    <div class="col-12 col-xl-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4 class="mb-3">Nhà cung cấp <sup class="text-danger" *ngIf="!isUpdate">*</sup></h4>
+          <ng-select formControlName="supplierId">
+            <ng-option *ngFor="let supplier of suppliers" [value]="supplier.id">
+              {{ supplier.name }}
+            </ng-option>
+          </ng-select>
+          <small class="text-danger mt-1" *ngIf="receiptForm['controls']['supplierId'].dirty">
+            <span *ngIf="receiptForm['controls']['supplierId'].errors?.['required']">
+              Nhà cung cấp không được để trống
+            </span>
+          </small>
+        </div>
+        <div class="col-sm-6">
+          <h4 class="mb-3">Trạng thái thanh toán <sup class="text-danger">*</sup></h4>
+          <div class="m-auto">
+            <div class="form-check form-check-inline mb-0">
+              <input class="form-check-input" type="radio" name="status" value="false"
+                     formControlName="status"/>
+              <label class="form-check-label fs-9">Chưa thanh toán</label>
+            </div>
+            <div class="form-check form-check-inline mb-0">
+              <input class="form-check-input" type="radio" name="status" value="true"
+                     formControlName="status"/>
+              <label class="form-check-label fs-9">Đã thanh toán</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-12">
+      <h4 class="mb-3">Danh sách sản phẩm <sup class="text-danger" *ngIf="!isUpdate">*</sup></h4>
+      <div class="row" *ngIf="!isUpdate">
+        <div class="col-auto col-5">
+          <ng-select (change)="changeProduct()" formControlName="product" placeholder="Vui lòng chọn sản phẩm">
+            <ng-option *ngFor="let product of products" [value]="product">
+              {{product.id}} - {{ product.name }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-auto col-2 ps-0">
+          <ng-select formControlName="productDetails" placeholder="Chi tiết sản phẩm">
+            <ng-option *ngFor="let productDetail of productDetails" [value]="productDetail">
+              {{ productDetail.color }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-auto ps-0">
+          <button type="button" class="btn btn-primary" (click)="addReceiptDetails()"
+          [disabled]="receiptForm['controls']['product'].value == null || receiptForm['controls']['productDetails'].value === null"
+          >Thêm</button>
+        </div>
+      </div>
+      <div class="table-responsive scrollbar mx-n1 px-1 mt-3">
+        <table class="table table-bordered fs--1 mb-0 bg-body-emphasis">
+          <thead>
+          <tr>
+            <th class="align-middle white-space-nowrap text-center" scope="col" style="width: 0">
+              STT
+            </th>
+            <th class="align-middle text-wrap" scope="col">
+              Tên sản phẩm
+            </th>
+            <th class="align-middle white-space-nowrap" scope="col">
+              Màu sắc
+            </th>
+            <th class="align-middle white-space-nowrap" scope="col" style="width: 90px;">
+              Số lượng
+            </th>
+            <th class="align-middle white-space-nowrap" scope="col" style="width: 200px">
+              Giá nhập
+            </th>
+            <th class="align-middle white-space-nowrap" scope="col">
+              Thành tiền
+            </th>
+            <th class="text-end align-middle pe-0 ps-4" scope="col" style="width: 60px;"
+                *ngIf="!isUpdate"></th>
+          </tr>
+          </thead>
+          <tbody class="list" id="customers-table-body" formArrayName="receiptDetails">
+          <tr *ngIf="receiptForm['controls']['receiptDetails'].errors?.['required']">
+            <td class="text-danger mt-1 text-center" colspan="7">
+              Danh sách sản phẩm không được để trống
+            </td>
+          </tr>
+          <tr class="hover-actions-trigger btn-reveal-trigger position-static"
+              *ngFor="let details of receiptDetails.controls; let i = index"
+              [formGroupName]="i">
+            <td class="customer align-middle white-space-nowrap py-3 pe-0 text-center fw-bold">
+              {{ i + 1 }}
+            </td>
+            <td class="phone align-middle white-space-nowrap pe-5">
+              {{ details.get('productName')?.value }}
+            </td>
+            <td class="total-orders align-middle white-space-nowrap fw-semibold text-body-highlight">
+              {{ details.get('color')?.value }}
+            </td>
+            <td class="total-spent align-middle white-space-nowrap text-body-emphasis">
+              <div class="col-auto">
+                <input class="form-control" type="text" formControlName="quantity" (input)="quantityChange(i)"
+                       *ngIf="!isUpdate" appNoLeadingSpace appOnlyNumberDirective/>
+                <span *ngIf="isUpdate">{{ details.get('quantity')?.value }}</span>
+              </div>
+              <small class="text-danger mt-1" *ngIf="details.get('quantity')?.dirty">
+                <span *ngIf="details.get('quantity')?.hasError('required')">
+                  Số lượng không được để trống
+                </span>
+                <span *ngIf="details.get('quantity')?.hasError('min')">
+                  Số lượng sản phẩm phải là số nguyên lớn hơn 0
+                </span>
+              </small>
+            </td>
+            <td class="last-seen align-middle white-space-nowrap fw-bold text-body-tertiary">
+              <div class="col-auto">
+                <input class="form-control" type="text" formControlName="price" (input)="priceChange(i)"
+                       *ngIf="!isUpdate" appNoLeadingSpace appOnlyNumberFloatDirective/>
+                <span *ngIf="isUpdate">{{ details.get('price')?.value  | currency:'VND':true:'1.0-0' }}</span>
+              </div>
+              <small class="text-danger mt-1" *ngIf="details.get('price')?.dirty">
+                <span *ngIf="details.get('price')?.hasError('required')">
+                  Giá nhập không được để trống
+                </span>
+                <span *ngIf="!details.get('price')?.hasError('required') && details.get('price')?.hasError('greaterThanZero')">
+                  Giá sản phẩm phải là số lớn hơn 0
+                </span>
+              </small>
+            </td>
+            <td class="last-order align-middle white-space-nowrap text-body-tertiary">
+              {{ details.get('totalOneProduct')?.value | currency:'VND':true:'1.0-0' }}
+            </td>
+            <td class="align-middle white-space-nowrap text-center ps-0 btn-reveal-trigger" *ngIf="!isUpdate">
+              <div class="font-sans-serif btn-reveal-trigger position-static">
+                <button class="btn btn-sm btn-outline-danger fs--2" type="button"
+                        (click)="removeReceiptDetails(i)">
+                  <span class="fa-solid fa-trash fs--2"></span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-end mt-3 mb-5">
+    <div class="col-auto">
+      <a class="btn btn-phoenix-secondary me-2 mb-2 mb-sm-0" type="button" href="/admin/receipt">
+        Quay lại
+      </a>
+      <button class="btn btn-primary mb-2 mb-sm-0" type="submit" [disabled]="receiptForm.invalid">
+        <span [class.d-none]="isDisplayNone">{{ btnSave }}</span>
+        <span class="indicator-progress" [class.d-none]="!isDisplayNone">
+          Vui lòng chờ...
+          <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</form>

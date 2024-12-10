@@ -1,0 +1,258 @@
+<div class="ecommerce-homepage pt-5 mb-9">
+
+  <!-- ============================================-->
+  <!-- <section> begin ============================-->
+  <section class="py-0">
+    <div class="container-small">
+      <div class="scrollbar">
+        <div class="d-flex justify-content-between">
+          <div *ngFor="let item of brands let lastItem = last" [class.me-3]="!lastItem" [class.me-0]="lastItem">
+            <a class="icon-nav-item" href="/product?brand={{item.slug}}">
+              <div class="icon-container mb-2 m-auto" style="background-color: white;">
+                <img class="img-fluid image-custom" src="{{baseUrl}}/images/{{item.thumbnail}}" alt="" />
+              </div>
+              <p class="nav-label" nowrap>{{item.name}}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============================================-->
+  <!-- <section> begin ============================-->
+  <section class="py-0 px-xl-3">
+    <div class="container px-xl-0 px-xxl-3">
+      <div class="row g-3 mb-9 mt-2">
+        <div class="col-12">
+          <div class="swiper-theme-container products-slider">
+            <div class="swiper swiper-container theme-slider">
+              <swiper-container appSwiper [config]="swiperBannerConfig">
+                <swiper-slide *ngFor="let banner of banners">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <img class="rounded-3" [src]="banner" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-6" *ngIf="productInSale?.length > 0">
+        <div class="col-12 col-lg-12 col-xxl-12">
+          <div class="d-flex justify-content-center mb-3">
+            <div class="d-flex">
+              <span class="fas fa-bolt text-warning fs-6"></span>
+              <h3 class="mx-2 fw-semibold">SẢN PHẨM ĐANG KHUYẾN MÃI</h3>
+              <span class="fas fa-bolt text-warning fs-6"></span>
+            </div>
+          </div>
+          <div class="swiper-theme-container products-slider">
+            <div class="swiper swiper-container theme-slider">
+              <swiper-container appSwiper [config]="swiperSaleConfig">
+                <swiper-slide *ngFor="let newest of productInSale">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 border-translucent rounded-3 position-relative mb-3">
+                              <div
+                                class="rounded-circle p-0 d-flex flex-center btn-tag z-2 d-toggle-container btn-outline-primary">
+                                <span *ngIf="newest.totalQuantity === 0"
+                                  class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto">Hết hàng</span>
+                              </div>
+                              <div class="image-container">
+                                <img class="img-fluid image-custom" src="{{baseUrl}}/images/{{newest.thumbnail}}"
+                                  alt="" />
+                              </div>
+                            </div>
+                            <a class="stretched-link text-decoration-none" href="/product/{{newest.slug}}">
+                              <h6 class="mb-2 lh-sm line-clamp-3 fs-8 product-name">{{newest.name}}</h6>
+                            </a>
+                          </div>
+                          <div>
+                            <div *ngIf="newest.saleId !== null">
+                              <p class="me-2 text-body text-decoration-line-through mb-1 fs-9">{{newest.price |
+                                currencyFormat:'VND' }}</p>
+                              <div class="d-flex justify-content-end align-items-end mb-1 text-end w-100">
+                                <h3 class="mb-0 text-danger-dark fw-bold fs-7">{{newest.salePrice | currencyFormat:'VND'
+                                  }}
+                                </h3>
+                                <span *ngIf="newest.saleId !== null"
+                                  class="badge badge-phoenix badge-phoenix-danger fs-9 fw-normal pt-1 pb-1 ms-auto">-{{newest.discount}}%</span>
+                              </div>
+                            </div>
+                            <div *ngIf="newest.saleId === null">
+                              <h3 class="fw-bold fs-7">{{newest.price | currencyFormat:'VND' }}</h3>
+                            </div>
+                            <div class="d-flex align-items-end mb-1 text-end">
+                              <p class="text-body-tertiary fw-semibold fs-9 lh-1 mb-0">{{newest.countColor |
+                                abbreviation}}
+                                màu
+                                sắc</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================-->
+      <div class="mb-6">
+        <div class="d-flex justify-content-center mb-3 mt-10">
+          <h3 class="fw-semibold">SẢN PHẨM MỚI</h3>
+        </div>
+        <div class="swiper-theme-container products-slider">
+          <div class="swiper swiper-container theme-slider">
+            <swiper-container appSwiper [config]="swiperNewestConfig">
+              <swiper-slide *ngFor="let newest of productNewest">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="position-relative text-decoration-none product-card h-100">
+                      <div class="d-flex flex-column justify-content-between h-100">
+                        <div>
+                          <div class="border border-1 border-translucent rounded-3 position-relative mb-3">
+                            <div
+                              class="rounded-circle p-0 d-flex flex-center btn-tag z-2 d-toggle-container btn-outline-primary">
+                              <span *ngIf="newest.totalQuantity === 0"
+                                class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto">Hết hàng</span>
+                            </div>
+                            <div class="image-container">
+                              <img class="img-fluid image-custom" src="{{baseUrl}}/images/{{newest.thumbnail}}"
+                                alt="" />
+                            </div>
+                          </div>
+                          <a class="stretched-link text-decoration-none" [routerLink]="['/product/', newest.slug]">
+                            <h6 class="mb-2 lh-sm line-clamp-3 fs-8 product-name">{{newest.name}}</h6>
+                          </a>
+                        </div>
+                        <div>
+                          <div *ngIf="newest.saleId !== null">
+                            <p class="me-2 text-body text-decoration-line-through mb-1 fs-9">{{newest.price |
+                              currencyFormat:'VND' }}</p>
+                            <div class="d-flex justify-content-end align-items-end mb-1 text-end w-100">
+                              <h3 class="mb-0 text-danger-dark fw-bold fs-7">{{newest.salePrice | currencyFormat:'VND'
+                                }}
+                              </h3>
+                              <span *ngIf="newest.saleId !== null"
+                                class="badge badge-phoenix badge-phoenix-danger fs-9 fw-normal pt-1 pb-1 ms-auto">-{{newest.discount}}%</span>
+                            </div>
+                          </div>
+                          <div *ngIf="newest.saleId === null">
+                            <h3 class="fw-bold fs-7">{{newest.price | currencyFormat:'VND' }}</h3>
+                          </div>
+                          <div class="d-flex align-items-end mb-1 text-end">
+                            <p class="text-body-tertiary fw-semibold fs-9 lh-1 mb-0">{{newest.countColor |
+                              abbreviation}}
+                              màu
+                              sắc</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+            </swiper-container>
+          </div>
+          <div class="swiper-nav">
+            <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
+            <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-6" *ngIf="viewedProducts?.length > 0">
+        <div class="d-flex justify-content-center mb-3 mt-10">
+          <h3 class="fw-semibold">ĐÃ XEM GẦN ĐÂY</h3>
+        </div>
+        <div class="swiper-theme-container products-slider">
+          <div class="swiper swiper-container theme-slider">
+            <swiper-container appSwiper [config]="swiperviewedConfig">
+              <swiper-slide *ngFor="let newest of viewedProducts">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="position-relative text-decoration-none product-card h-100">
+                      <div class="d-flex flex-column justify-content-between h-100">
+                        <div>
+                          <div class="border border-1 border-translucent rounded-3 position-relative mb-3">
+                            <div
+                              class="rounded-circle p-0 d-flex flex-center btn-tag z-2 d-toggle-container btn-outline-primary">
+                              <span *ngIf="newest.totalQuantity === 0"
+                                class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto">Hết hàng</span>
+                            </div>
+                            <div class="image-container">
+                              <img class="img-fluid image-custom" src="{{baseUrl}}/images/{{newest.thumbnail}}"
+                                alt="" />
+                            </div>
+                          </div>
+                          <a class="stretched-link text-decoration-none" href="/product/{{newest.slug}}">
+                            <h6 class="mb-2 lh-sm line-clamp-3 fs-8 product-name">{{newest.name}}</h6>
+                          </a>
+                        </div>
+                        <div>
+                          <div *ngIf="newest.saleId !== null">
+                            <p class="me-2 text-body text-decoration-line-through mb-1 fs-9">{{newest.price |
+                              currencyFormat:'VND' }}</p>
+                            <div class="d-flex justify-content-end align-items-end mb-1 text-end w-100">
+                              <h3 class="mb-0 text-danger-dark fw-bold fs-7">{{newest.salePrice | currencyFormat:'VND'
+                                }}
+                              </h3>
+                              <span *ngIf="newest.saleId !== null"
+                                class="badge badge-phoenix badge-phoenix-danger fs-9 fw-normal pt-1 pb-1 ms-auto">-{{newest.discount}}%</span>
+                            </div>
+                          </div>
+                          <div *ngIf="newest.saleId === null">
+                            <h3 class="fw-bold fs-7">{{newest.price | currencyFormat:'VND' }}</h3>
+                          </div>
+                          <div class="d-flex align-items-end mb-1 text-end">
+                            <p class="text-body-tertiary fw-semibold fs-9 lh-1 mb-0">{{newest.countColor |
+                              abbreviation}}
+                              màu
+                              sắc</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+            </swiper-container>
+          </div>
+        </div>
+      </div>
+      <div class="row flex-center mb-15 mt-11 gy-6" *ngIf="!isLogin">
+        <div class="col-auto">
+          <img class="d-dark-none" src="../../../assets/img/spot-illustrations/light_30.png" alt="" width="305" />
+          <img class="d-light-none" src="../../../assets/img/spot-illustrations/dark_30.png" alt="" width="305" />
+        </div>
+        <div class="col-auto">
+          <div class="text-center text-lg-start">
+            <h3 class="text-body-highlight mb-2" style="line-height: 1.5;">
+              <span class="fw-semibold"> Bạn muốn có </span>trải nghiệm <br class="d-md-none" />khách hàng tuyệt vời
+              nhất?
+            </h3>
+            <h1 class="display-3 fw-semibold mb-4 fs-4 mt-3" style="line-height: 1.3;">Hãy trở thành
+              <span class="text-primary fw-bolder">thành viên
+              </span>ngay hôm nay!
+            </h1>
+            <a class="btn btn-lg btn-primary px-7" href="/register">Đăng ký ngay
+              <span class="fas fa-chevron-right ms-2 fs-9"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

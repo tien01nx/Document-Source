@@ -1,0 +1,230 @@
+<div class="pt-5 pb-9">
+  <section class="py-0">
+    <div class="container-small">
+      <nav class="mb-3" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a [routerLink]="['/']">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/product']">Sản phẩm</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{product?.name}}</li>
+        </ol>
+      </nav>
+      <div class="row g-5 mb-5 mb-lg-8">
+        <div class="col-12 col-lg-6">
+          <div class="row g-3 mb-3">
+            <!-- ảnh to -->
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="d-flex align-items-center border border-translucent rounded-3 text-center h-100 p-3">
+                <div class="zoomable-image-container flex-1">
+                  <img class="img-fluid zoomable-image thumbnail-image" src="{{baseUrl}}/images/{{image}}" alt=""
+                    style="object-fit: contain;" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- hỉnh thêm ảnh sản phẩm -->
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="swiper-theme-container products-slider">
+              <div class="swiper swiper-container theme-slider">
+                <swiper-container appSwiper [config]="swiperImageConfig">
+                  <swiper-slide *ngFor="let image of product?.images">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide" [ngClass]="{'choose-image': image === isImage}">
+                        <div class="border border-1 border-translucent rounded-3 position-relative p-2"
+                          (click)="chooseImage(image)">
+                          <img class="img-fluid image-custom-list" src="{{baseUrl}}/images/{{image}}" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </swiper-slide>
+                </swiper-container>
+              </div>
+              <div class="swiper-nav">
+                <div class="swiper-next"><span class="fas fa-chevron-right nav-icon"></span></div>
+                <div class="swiper-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="flex-column justify-content-between h-100">
+            <div>
+              <h3 class="mb-3 lh-sm fs-5 fw-semibold">{{product?.name}}</h3>
+              <div class="d-flex flex-wrap align-items-start mb-3" *ngIf="tag">
+                <span class="badge text-bg-success fs-9 rounded-pill me-2 fw-semibold">Mới</span>
+              </div>
+              <div class="d-flex flex-wrap align-items-center" *ngIf="product?.saleId !== null">
+                <p class="text-body-quaternary text-decoration-line-through fs-7 mb-0 me-3">
+                  {{product?.price | currencyFormat:'VND' }}</p>
+                <h1 class="me-3 text-danger-dark fw-bold">{{product?.salePrice | currencyFormat:'VND' }}</h1>
+                <span class="badge badge-phoenix fs-10 badge-phoenix-danger">
+                  <span class="badge-label fs-9">giảm {{product?.discount}} %</span>
+                </span>
+              </div>
+              <div class="d-flex flex-wrap align-items-center" *ngIf="product?.saleId === null">
+                <h1 class="me-3 fw-bold">{{product?.price | currencyFormat:'VND' }}</h1>
+              </div>
+              <p *ngIf="product?.saleId !== null" class="text-danger-dark fw-normal mb-4 mt-2 mb-lg-0 fs-8">
+                Ưu đãi đặc biệt đến hết ngày {{product.endDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div>
+              <div class="mb-3 mt-3">
+                <p class="fw-semibold mb-1 text-body">Thương hiệu: <span>{{product?.brandName}}</span></p>
+                <p class="fw-semibold mb-4 text-body">Tình trạng:
+                  <span *ngIf="product?.totalQuantity == 0" class="text-danger-dark">Hết hàng</span>
+                  <span *ngIf="product?.totalQuantity > 0">Còn hàng ({{currentQuantity}})</span>
+                </p>
+                <p class="fw-semibold mb-2 text-body">Màu sắc:</p>
+                <div class="swatch-element mb-3 me-2" *ngFor="let color of product?.productColors">
+                  <input class="swatchInput hide" id="color-{{color.id}}" data-var="9" type="radio" name="option-color-{{color.id}}"
+                    [value]="color.id" (change)="onRadioColorChange($event)" [(ngModel)]="selectedColor"
+                    [disabled]="color.colorQuantity == 0">
+                  <label class="swatchLbl" for="color-{{color.id}}"
+                    [ngClass]="{'bg-disabled': color.colorQuantity === 0}">{{color.color}}</label>
+                </div>
+                <p class="fw-semibold mb-2 text-body">Kích cỡ:
+                  <a class="ms-2 fs-9 fw-semibold" (click)="scrollToTarget()">(Hướng dẫn chọn kích cỡ)</a>
+                </p>
+                <div *ngFor="let size of sizeList" style="display: inline-block;">
+                  <div class="swatch-element me-2">
+                    <input class="swatchInput hide" id="size-{{size.id}}" data-var="9" type="radio" name="option-size-{{size.id}}"
+                      [value]="size.id" (change)="onRadioSizeChange($event)" [(ngModel)]="selectedSize"
+                      [disabled]="size.quantity == 0">
+                    <label class="swatchLbl" for="size-{{size.id}}"
+                      [ngClass]="{'bg-disabled': size.quantity === 0}">{{size.size}}</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-3 g-sm-5 align-items-end">
+                <div class="col-12 col-sm">
+                  <p class="fw-semibold mb-2 text-body me-3">Số lượng : </p>
+                  <div class="d-flex align-items-end justify-content-between">
+                    <div class="d-flex flex-between-center border">
+                      <button class="btn btn-phoenix-primary px-3 border-0" style="border-radius: 0%;"
+                        (click)="minus()">
+                        <span class="fas fa-minus"></span>
+                      </button>
+                      <input class="form-control text-center input-spin-none bg-transparent border-0 outline-none"
+                        style="width:50px;" type="number" min="1" [value]="selectedQuantity" readonly />
+                      <button class="btn btn-phoenix-primary px-3 border-0" style="border-radius: 0%;" (click)="plus()">
+                        <span class="fas fa-plus"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex mt-3">
+                <button class="btn btn-lg btn-secondary w-100 me-3 px-2 px-sm-4 fs-9 fs-sm-8"
+                  [disabled]="product?.totalQuantity == 0" (click)="buyNow()">
+                  <span class="fas fa-arrow-right me-2"></span>Mua ngay
+                </button>
+                <button class="btn btn-lg btn-outline-secondary w-100 fs-9 fs-sm-8"
+                  [disabled]="product?.totalQuantity == 0" (click)="addToCart()">
+                  <span class="fas fa-shopping-cart me-2"></span>Thêm vào giỏ
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mô tả và sản phẩm tương tự -->
+  <section class="py-0">
+    <div class="container-small">
+      <ul class="nav nav-underline fs-9 mb-4" id="productTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active fs-7" style="color: black;">Mô tả sản phẩm</a>
+        </li>
+      </ul>
+      <div class="row gx-3 gy-7">
+        <div class="col-12 col-lg-12 col-xl-12">
+          <div class="tab-content" id="productTabContent">
+            <div class="tab-pane fade show active text-body-emphasis description" id="tab-description" role="tabpanel"
+              aria-labelledby="description-tab">
+              <div [innerHTML]="getHtmlProductDescription()"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-0 mt-3">
+    <div class="container-small">
+      <ul class="nav nav-underline fs-9 mb-4" id="productTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active fs-7" style="color: black;" id="targetElement">Hướng dẫn chọn kích cỡ</a>
+        </li>
+      </ul>
+      <div class="row gx-3 gy-7">
+        <div class="col-12 col-lg-12 col-xl-12 text-center">
+          <img src="../../../../assets/size.jpg" alt="Hướng dẫn chọn kích cỡ" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<section class="py-0 mb-9" *ngIf="similarProducts?.length !== 0">
+  <div class="container">
+    <div class="d-flex flex-between-center mb-3">
+      <div>
+        <h3>Sản phẩm liên quan</h3>
+      </div>
+    </div>
+    <div class="swiper-theme-container products-slider">
+      <div class="swiper swiper-container theme-slider">
+        <swiper-container appSwiper [config]="swiperThumbsConfig">
+          <swiper-slide *ngFor="let similar of similarProducts">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="position-relative text-decoration-none product-card h-100">
+                  <div class="d-flex flex-column justify-content-between h-100">
+                    <div>
+                      <div class="border border-1 border-translucent rounded-3 position-relative mb-3">
+                        <div
+                          class="rounded-circle p-0 d-flex flex-center btn-tag z-2 d-toggle-container btn-outline-primary">
+                          <span *ngIf="similar.totalQuantity === 0"
+                            class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto">Hết hàng</span>
+                        </div>
+                        <div class="image-container">
+                          <img class="img-fluid image-custom" src="{{baseUrl}}/images/{{similar.thumbnail}}" alt="" />
+                        </div>
+                      </div>
+                      <a class="stretched-link text-decoration-none" href="/product/{{similar.slug}}">
+                        <h6 class="mb-2 lh-sm line-clamp-3 fs-8 product-name">{{similar.name}}</h6>
+                      </a>
+                    </div>
+                    <div>
+                      <div *ngIf="similar.saleId !== null">
+                        <p class="me-2 text-body text-decoration-line-through mb-1 fs-9">{{similar.price |
+                          currencyFormat:'VND' }}</p>
+                        <div class="d-flex justify-content-end align-items-end mb-1 text-end w-100">
+                          <h3 class="mb-0 text-danger-dark fw-bold fs-7">{{similar.salePrice | currencyFormat:'VND' }}
+                          </h3>
+                          <span *ngIf="similar.saleId !== null"
+                            class="badge badge-phoenix badge-phoenix-danger fs-9 fw-normal pt-1 pb-1 ms-auto">-{{similar.discount}}%</span>
+                        </div>
+                      </div>
+                      <div *ngIf="similar.saleId === null">
+                        <h3 class="fw-bold fs-7">{{similar.price | currencyFormat:'VND' }}</h3>
+                      </div>
+                      <div class="d-flex align-items-end mb-1 text-end">
+                        <p class="text-body-tertiary fw-semibold fs-9 lh-1 mb-0">{{similar.countColor | abbreviation}}
+                          màu
+                          sắc</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+      <div class="swiper-nav">
+        <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
+        <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+      </div>
+    </div>
+  </div>
+</section>

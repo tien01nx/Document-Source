@@ -1,0 +1,1207 @@
+<app-client-header></app-client-header>
+<app-client-menu></app-client-menu>
+<section class="pt-5 pb-9">
+  <div class="container-small cart">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-5">
+      <div>
+        <h2>Trạng thái đơn hàng số {{ trxTransactionId }}</h2>
+        <p
+          class="text-body-secondary mb-0"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus !== Utils.CANCELLED
+          "
+        >
+          Hình thức thanh toán
+          {{
+            Utils.getPaymentType(
+              orderTrackingDTO[0].trxTransaction.paymentTypes
+            )
+          }}
+
+          <br class="text-body-secondary fw-bold" />
+          <span
+            [ngClass]="{
+              'text-success':
+                orderTrackingDTO[0].trxTransaction.paymentStatus === 'APPROVED',
+              'text-danger':
+                orderTrackingDTO[0].trxTransaction.paymentStatus === 'PENDING'
+            }"
+          >
+            {{
+              Utils.getPaymentStatus(
+                orderTrackingDTO[0].trxTransaction.paymentStatus
+              )
+            }}
+          </span>
+
+          <span class="ms-sm-1"></span>
+        </p>
+
+         <p
+          class="text-body-secondary mb-0"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus === Utils.CANCELLED
+          "
+        >
+        <span>Đơn hàng đã hủy</span>
+        <span class="text-danger"> Đã hoàn tiền</span>
+        </p>
+      </div>
+
+      <div>
+        <button
+          class="btn btn-danger mt-3 me-3"
+          type="button"
+          data-bs-target="#modalcategory"
+          data-bs-toggle="modal"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus === Utils.PENDING ||
+            orderTrackingDTO[0].trxTransaction.orderStatus === Utils.ONHOLD
+          "
+        >
+          <i class="fal fa-file-invoice"></i>
+          Hủy đơn hàng
+        </button>
+
+        <button
+          class="btn btn-subtle-success mt-3 me-3"
+          type="button"
+          (click)="getReportBill()"
+          *ngIf="orderTrackingDTO[0].trxTransaction.orderStatus === 'DELIVERED'"
+        >
+          <i class="fal fa-file-invoice"></i>
+          In Hóa đơn
+        </button>
+
+        <button
+          class="btn btn-outline-primary mt-3 me-3"
+          type="button"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.paymentTypes ===
+              'PAYMENTVIACARD' &&
+            orderTrackingDTO[0].trxTransaction.paymentStatus === 'PENDING'
+          "
+          (click)="repayment()"
+        >
+          <i class="fal fa-credit-card"></i>
+          Thanh toán lại
+        </button>
+      </div>
+    </div>
+    <div class="row gy-9 gx-5">
+      <div class="col-12 col-lg-6">
+        <!-- hiện thị thông tin product -->
+        <div class="card mt-3 mt-lg-0">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h3 class="mb-0">Chi tiết đơn hàng</h3>
+              <!-- <button class="btn btn-link pe-0" type="button">Edit cart</button> -->
+            </div>
+            <div class="border-dashed border-bottom border-translucent mt-4">
+              <div *ngFor="let item of orderTrackingDTO">
+                <div class="row align-items-center mb-2 g-3">
+                  <div class="col-8 col-md-7 col-lg-8">
+                    <div class="d-flex align-items-center">
+                      <img
+                        class="me-2 ms-1"
+                        src="{{ Environment.apiBaseRoot }}/{{
+                          item.productImage
+                        }}"
+                        width="40"
+                        alt=""
+                      />
+                      <h6 class="fw-semibold text-body-highlight lh-base">
+                        {{ item.product.productName }}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="col-2 col-md-3 col-lg-2">
+                    <h6 class="fs-10 mb-0">
+                      {{ item.quantity }}
+                    </h6>
+                  </div>
+                  <div class="col-2 ps-0">
+                    <h5 class="mb-0 fw-semibold text-end">
+                      {{ item.quantity * item.price | number : "1.0-0" }}
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-flex justify-content-between"
+              *ngIf="priceDiscount > 0"
+            >
+              <p class="text-body fw-semibold">Giảm giá :</p>
+              <p class="text-danger fw-semibold">
+                {{ priceDiscount | number : "1.0-0" }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="text-body fw-semibold">Phí vận chuyển:</p>
+              <p class="fw-semibold">
+                {{
+                  orderTrackingDTO[0].trxTransaction.priceShip
+                    | number : "1.0-0"
+                }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between border-dashed-y pt-3">
+              <h4 class="mb-0">Tổng tiền :</h4>
+              <h4 class="mb-0">{{ getTotalPrice() | number : "1.0-0" }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <!-- chưa xác nhận -->
+        <div
+          class="timeline-vertical"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus === Utils.PENDING
+          "
+        >
+          <div class="timeline-item">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-warning"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Gói hàng của bạn đã sẵn sàng để người bán chuẩn bị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-check text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-dashed"></span>
+                </div>
+              </div>
+              .
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đã được xác nhận bới người bán hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-timed text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-dashed"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ lấy hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đang đợi bên vận chuyển đến lấy hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-fast text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-dashed"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đang giao hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-person-booth text-white fs-10"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã giao</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- đã xác nhận -->
+        <div
+          class="timeline-vertical"
+          *ngIf="orderTrackingDTO[0].trxTransaction.orderStatus == Utils.ONHOLD"
+        >
+          <div class="timeline-item">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Gói hàng của bạn đã sẵn sàng để người bán chuẩn bị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-check text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-warning"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đã được xác nhận bới người bán hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-warning"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-timed text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-dashed"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ lấy hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đang đợi bên vận chuyển đến lấy hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-fast text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-dashed"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đang giao hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-person-booth text-white fs-10"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã giao</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chờ lấy hàng -->
+        <div
+          class="timeline-vertical"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus ==
+            Utils.WAITINGFORPICKUP
+          "
+        >
+          <!-- *ngIf="orderTrackingDTO[0].trxTransaction.orderStatus == 'WAITING_FOR_PICKUP'" -->
+
+          <div class="timeline-item">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Gói hàng của bạn đã sẵn sàng để người bán chuẩn bị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-check text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đã được xác nhận bới người bán hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForPickupDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForPickupDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-timed text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-warning"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ lấy hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đang đợi bên vận chuyển đến lấy hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-warning"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-fast text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-dashed"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đang giao hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-body-quaternary"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-person-booth text-white fs-10"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã giao</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đang giao hàng -->
+        <div
+          class="timeline-vertical"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus ==
+            Utils.WAITINGFORDELIVERY
+          "
+        >
+          <div class="timeline-item">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Gói hàng của bạn đã sẵn sàng để người bán chuẩn bị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-check text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đã được xác nhận bới người bán hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForPickupDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForPickupDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-timed text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ lấy hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đang đợi bên vận chuyển đến lấy hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForDeliveryDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForDeliveryDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-fast text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-warning"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đang giao hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="margin-left: 60px; margin-top: -35px"
+          >
+            <div class="row g-md-3 align-items-center">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                ></div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-warning"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-person-booth text-white fs-10"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã giao</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đã giao hàng -->
+        <div
+          class="timeline-vertical"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus == Utils.DELIVERED
+          "
+        >
+          <!-- *ngIf="orderTrackingDTO[0].trxTransaction.orderStatus == 'WAITING_FOR_PICKUP'" -->
+
+          <div class="timeline-item">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Gói hàng của bạn đã sẵn sàng để người bán chuẩn bị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.onholDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-check text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đã được xác nhận bới người bán hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForPickupDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForPickupDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-timed text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ lấy hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đang đợi bên vận chuyển đến lấy hàng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForDeliveryDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.waitingForDeliveryDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-shipping-fast text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đang giao hàng</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.deliveredDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.deliveredDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-person-booth text-white fs-10"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã giao</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng đang đến nơi của bạn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- đã hủy -->
+        <div
+          class="timeline-vertical"
+          *ngIf="
+            orderTrackingDTO[0].trxTransaction.orderStatus === Utils.CANCELLED
+          "
+        >
+          <div class="timeline-item">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                  <span class="timeline-bar border-end border-success"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Chờ xác nhận</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Gói hàng của bạn đã sẵn sàng để người bán chuẩn bị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-top: -35px">
+            <div class="row g-md-3 align-items-center mb-8 mb-lg-10">
+              <div class="col-12 col-md-auto d-flex">
+                <div
+                  class="timeline-item-date text-end order-1 order-md-0 me-md-4"
+                >
+                  <p class="fs-10 fw-semibold text-body-tertiary mb-0">
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "dd/MM/yyyy"
+                    }}<br class="d-none d-md-block" />
+                    {{
+                      orderTrackingDTO[0].trxTransaction.orderDate
+                        | date : "HH:mm:ss a"
+                    }}
+                  </p>
+                </div>
+                <div class="timeline-item-bar position-relative me-3 me-md-0">
+                  <div
+                    class="icon-item icon-item-sm bg-success"
+                    data-bs-theme="light"
+                  >
+                    <span class="fas fa-spinner text-white fs-10"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="timeline-item-content ps-6 ps-md-3">
+                  <h4>Đã hủy</h4>
+                  <p class="fs-9 text-body-secondary mb-0">
+                    Đơn hàng của bạn đã được hủy thành công
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
+<app-client-footer></app-client-footer>
+
+<div class="modal fade" id="modalcategory" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalcategoryLabel">
+          Thông tin hủy đơn hàng
+        </h5>
+        <button
+          class="btn p-1"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #btnCloseModal
+        >
+          <span class="fas fa-times fs-9"></span>
+        </button>
+      </div>
+      <form class="form" [formGroup]="trxTranForm" (submit)="onSubmit()">
+        <div class="modal-body">
+          <div class="row px-3" *ngIf="errorMessage != ''">
+            <label
+              class="col-sm-12 col-form-label fs-9 alert alert-subtle-danger p-2"
+              role="alert"
+            >
+              {{ errorMessage }}
+            </label>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label fs-9" for="cancelReason"
+              >Lý do hủy <sup class="text-danger">*</sup></label
+            >
+            <div class="col-sm-8">
+              <textarea
+                class="form-control"
+                id="cancelReason"
+                type="text"
+                formControlName="cancelReason"
+                placeholder="Lý do hủy"
+              ></textarea>
+              <small
+                class="text-danger mt-1"
+                *ngIf="trxTranForm['controls']['cancelReason'].dirty"
+              >
+                <span
+                  *ngIf="trxTranForm['controls']['cancelReason'].errors?.['required']"
+                >
+                  Lý do không được để trống
+                </span>
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="trxTranForm.invalid"
+          >
+            <span>Hủy đơn</span>
+          </button>
+
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            data-bs-dismiss="modal"
+          >
+            Quay lại
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

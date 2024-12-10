@@ -1,0 +1,309 @@
+<app-client-header></app-client-header>
+<app-client-menu></app-client-menu>
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="pt-5 pb-9">
+  <div class="container-small">
+    <!-- <nav class="mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
+        <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Default</li>
+      </ol>
+    </nav> -->
+    <h2 class="mb-5">Kiểm tra</h2>
+    <div class="row justify-content-between">
+      <div class="col-lg-7 col-xl-7">
+        <form class="form" [formGroup]="trxTransacForm">
+          <div class="d-flex align-items-end">
+            <h3 class="mb-0 me-3">Chi tiết vận chuyển</h3>
+          </div>
+          <table class="table table-borderless mt-4">
+            <tbody>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="user"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Họ và tên</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <input
+                    class="form-control"
+                    id="fullName"
+                    type="text"
+                    formControlName="fullName"
+                    placeholder="Họ và tên"
+                  />
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['fullName'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['fullName'].errors?.['required']"
+                    >
+                      Họ và tên không được để trống
+                    </span>
+                    <span
+                      *ngIf="trxTransacForm['controls']['fullName'].errors?.['maxlength']"
+                    >
+                      Họ và tên không được vượt quá 50 ký tự
+                    </span>
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="home"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Địa chỉ</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <input
+                    class="form-control"
+                    id="address"
+                    type="text"
+                    formControlName="address"
+                    placeholder="Họ và tên"
+                  />
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['address'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['address'].errors?.['required']"
+                    >
+                      Địa chỉ là bắt buộc
+                    </span>
+                    <span
+                      *ngIf="trxTransacForm['controls']['address'].errors?.['maxlength']"
+                    >
+                      Địa chỉ tối đa 100 ký tự
+                    </span>
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="phone"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Số điện thoại</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <input
+                    class="form-control"
+                    id="phoneNumber"
+                    type="text"
+                    formControlName="phoneNumber"
+                    placeholder="Số điện thoại"
+                  />
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['phoneNumber'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['phoneNumber'].errors?.['required']"
+                    >
+                      Số điện thoại là bắt buộc
+                    </span>
+                    <span
+                      *ngIf="trxTransacForm['controls']['phoneNumber'].errors?.['maxlength']
+                  || trxTransacForm['controls']['phoneNumber'].errors?.['minlength']"
+                    >
+                      Số điện thoại phải đủ 10 số
+                    </span>
+                    <span
+                      *ngIf="!(trxTransacForm['controls']['phoneNumber'].errors?.['maxlength']
+                              || trxTransacForm['controls']['phoneNumber'].errors?.['minlength'])
+                              && trxTransacForm['controls']['phoneNumber'].errors?.['pattern']"
+                    >
+                      Số điện thoại không hợp lệ
+                    </span>
+                  </small>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="py-2 ps-0">
+                  <div class="d-flex">
+                    <span
+                      class="fs-3 me-2"
+                      data-feather="phone"
+                      style="height: 16px; width: 16px"
+                    >
+                    </span>
+                    <h5 class="lh-sm me-4">Phương thức thanh toán</h5>
+                  </div>
+                </td>
+                <td class="py-2 fw-bold lh-sm">:</td>
+                <td class="py-2 px-3">
+                  <ng-select
+                    style="height: 16px; width: 400px"
+                    [items]="Utils.paymentTypes"
+                    bindValue="name"
+                    bindLabel="value"
+                    placeholder="Chọn phương thức thanh toán"
+                    formControlName="paymentTypes"
+                  ></ng-select>
+                  <small
+                    class="text-danger mt-1"
+                    *ngIf="trxTransacForm['controls']['paymentTypes'].dirty"
+                  >
+                    <span
+                      *ngIf="trxTransacForm['controls']['paymentTypes'].errors?.['required']"
+                    >
+                      Phương thức thanh toán là bắt buộc
+                    </span>
+                  </small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr class="my-6" />
+
+          <div class="row g-2 mb-5 mb-lg-0">
+            <div class="col-md-8 col-lg-9 d-grid">
+              <button
+                class="btn btn-primary"
+                type="submit"
+                [disabled]="trxTransacForm.invalid || !isDisplayNone"
+                (click)="submit()"
+              >
+                <span>{{ titleStatus }}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5 col-xl-5">
+        <div class="card mt-3 mt-lg-0">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h3 class="mb-0">Chi tiết đơn hàng</h3>
+              <!-- <button class="btn btn-link pe-0" type="button">Edit cart</button> -->
+            </div>
+            <div class="border-dashed border-bottom border-translucent mt-4">
+              <!-- Nếu shoppingcartdto.cart không có dữ liệu thì lấy dữ liệu từ transactiondetail đổ ra -->
+              <div
+                *ngIf="
+                  shoppingcartdto && shoppingcartdto.transactionDetail;
+                  then transactiondetail;
+                  else cartdetail
+                "
+              >
+                This content is not shown
+              </div>
+
+              <ng-template #cartdetail>
+                <div *ngFor="let item of shoppingcartdto.cart">
+                  <div class="row align-items-center mb-2 g-3">
+                    <div class="col-8 col-md-7 col-lg-8">
+                      <div class="d-flex align-items-center">
+                        <img
+                          class="me-2 ms-1"
+                          src="{{ Environment.apiBaseRoot }}/{{
+                            item.productImage
+                          }}"
+                          width="40"
+                          alt=""
+                        />
+                        <h6 class="fw-semibold text-body-highlight lh-base">
+                          {{ item.product.productName }}
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="col-2 col-md-3 col-lg-2">
+                      <h6 class="fs-10 mb-0">
+                        {{ item.quantity }}
+                      </h6>
+                    </div>
+                    <div class="col-2 ps-0">
+                      <h5 class="mb-0 fw-semibold text-end">
+                        {{ item.quantity * item.price | number : "1.0-0" }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template #transactiondetail>
+                <div *ngFor="let item of shoppingcartdto.transactionDetail">
+                  <div class="row align-items-center mb-2 g-3">
+                    <div class="col-8 col-md-7 col-lg-8">
+                      <div class="d-flex align-items-center">
+                        <img
+                          class="me-2 ms-1"
+                          src="{{ Environment.apiBaseRoot }}/{{
+                            item.productImage
+                          }}"
+                          width="40"
+                          alt=""
+                        />
+                        <h6 class="fw-semibold text-body-highlight lh-base">
+                          {{ item.product.productName }}
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="col-2 col-md-3 col-lg-2">
+                      <h6 class="fs-10 mb-0">
+                        {{ item.quantity }}
+                      </h6>
+                    </div>
+                    <div class="col-2 ps-0">
+                      <h5 class="mb-0 fw-semibold text-end">
+                        {{ item.quantity * item.price | number : "1.0-0" }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <div
+              class="d-flex justify-content-between"
+              *ngIf="priceDiscount > 0"
+            >
+              <p class="text-body fw-semibold">Giảm giá :</p>
+              <p class="text-danger fw-semibold">
+                {{ priceDiscount | number : "1.0-0" }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="text-body fw-semibold">Phí vận chuyển:</p>
+              <p class="fw-semibold">
+                {{ priceShip | number : "1.0-0" }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between border-dashed-y pt-3">
+              <h4 class="mb-0">Tổng tiền :</h4>
+              <h4 class="mb-0">{{ getTotalPrice() | number : "1.0-0" }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+<!-- ============================================-->
+<app-client-footer></app-client-footer>

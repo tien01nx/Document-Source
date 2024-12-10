@@ -1,0 +1,245 @@
+<nav class="mb-2" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+    <li class="breadcrumb-item">Quản lý bán hàng</li>
+    <li class="breadcrumb-item active">{{ titleString }}</li>
+  </ol>
+</nav>
+<div class="mb-9">
+  <div class="row g-3">
+    <div class="col-auto">
+      <h2 class="mb-3">Đơn hàng <span>#{{ orderDto.id }}</span></h2>
+    </div>
+  </div>
+  <div class="row g-5 gy-7">
+    <div class="col-12 col-xl-8 col-xxl-9">
+      <div id="orderTable">
+        <div class="table-responsive scrollbar">
+          <table class="table fs-9 mb-0 border-top border-translucent">
+            <thead>
+            <tr>
+              <th class="sort white-space-nowrap align-middle fs-10">Ảnh</th>
+              <th class="sort white-space-nowrap align-middle" style="min-width:280px;">Sản phẩm</th>
+              <th class="sort white-space-nowrap align-middle ps-4" style="width:150px;">Màu sắc</th>
+              <th class="sort white-space-nowrap align-middle text-end ps-4" style="width:150px;">Giá bán</th>
+              <th class="sort white-space-nowrap align-middle text-end ps-4" style="width:150px;">Giảm giá</th>
+              <th class="sort white-space-nowrap align-middle text-end ps-4" style="width:200px;">Số lượng</th>
+              <th class="sort white-space-nowrap align-middle text-end ps-4" style="width:250px;">Thành tiên</th>
+            </tr>
+            </thead>
+            <tbody class="list" id="order-table-body">
+            <tr class="hover-actions-trigger btn-reveal-trigger position-static"
+                *ngFor="let orderDetails of orderDto.orderDetails">
+              <td class="align-middle white-space-nowrap py-2">
+                <img [src]="baseUrl + orderDetails.productThumbnail" alt="" width="53"/>
+              </td>
+              <td class="products align-middle py-0">
+                {{ orderDetails.productName }}
+              </td>
+              <td class="color align-middle white-space-nowrap text-body py-0 ps-4">{{ orderDetails.productColor }}</td>
+              <td class="price align-middle text-body fw-semibold text-end py-0 ps-4">
+                {{ orderDetails.priceOriginal  | currency: 'VND': true: '1.0-0' }}
+              </td>
+              <td class="price align-middle text-body fw-semibold text-end py-0 ps-4">
+                {{ (100 - (orderDetails.price / orderDetails.priceOriginal) * 100)  | number: '1.0-0' }}%
+              </td>
+              <td class="size align-middle white-space-nowrap text-body-tertiary text-end fw-semibold py-0 ps-4">
+                {{ orderDetails.quantity }}
+              </td>
+              <td class="total align-middle fw-bold text-body-highlight text-end py-0 ps-4">
+                {{ orderDetails.totalMoney  | currency: 'VND': true: '1.0-0' }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="d-flex flex-between-center py-3 border-bottom border-translucent mb-6">
+        <p class="text-body-emphasis fw-semibold lh-sm mb-0">Tổng tiền :</p>
+        <p class="text-body-emphasis fw-bold lh-sm mb-0">
+          {{ orderDto.totalMoney | currency: 'VND': true: '1.0-0' }}
+        </p>
+      </div>
+      <div class="row gx-4 gy-6 g-xl-7 justify-content-sm-center justify-content-xl-start">
+        <div class="col-6" *ngIf="orderDto.note !== ''">
+          <h4 class="mb-3">Ghi chú</h4>
+          <div class="row g-4 flex-sm-column">
+            <div class="col-6 col-sm-6">
+              <p>{{ orderDto.note }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" *ngIf="orderDto.eyeglassPrescription !== null">
+          <h4 class="mb-3">Đơn kính</h4>
+          <div class="row g-4 flex-sm-column">
+            <div class="col-6 col-sm-6 w-100">
+              <img class="w-100" [src]="baseUrl + orderDto.eyeglassPrescription" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-4 col-xxl-3">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Thông tin đơn hàng</h3>
+              <div class="row g-4 flex-sm-column">
+                <div class="col-6 col-sm-12">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-user" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Người nhận</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.fullname }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-house" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Địa chỉ</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.address }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-phone" style="stroke-width:2.5;">  </span>
+                    <h6 class="mb-0">Số điện thoại</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.phone }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Ngày tạo</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.createdDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12" *ngIf="orderDto.paymentDate != null">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Ngày thanh toán</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.paymentDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12" *ngIf="orderDto.confirmDate != null">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Ngày xác nhận</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.confirmDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12" *ngIf="orderDto.deliveryToShipperDate != null">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Ngày giao hàng cho đơn vị vận chuyển</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.deliveryToShipperDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12" *ngIf="orderDto.deliveryDate != null">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Ngày giao hàng</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.deliveryDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+                  </div>
+                </div>
+<!--                <div class="col-6 col-sm-12" *ngIf="orderDto.receiveDate != null">-->
+<!--                  <div class="d-flex align-items-center mb-1">-->
+<!--                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>-->
+<!--                    <h6 class="mb-0">Ngày nhận hàng</h6>-->
+<!--                  </div>-->
+<!--                  <div class="ms-4">-->
+<!--                    {{ orderDto.receiveDate | date: 'dd/MM/yyyy HH:mm:ss' }}-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="col-6 col-sm-12" *ngIf="orderDto.completedDate != null">-->
+<!--                  <div class="d-flex align-items-center mb-1">-->
+<!--                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>-->
+<!--                    <h6 class="mb-0">Ngày hoàn thành</h6>-->
+<!--                  </div>-->
+<!--                  <div class="ms-4">-->
+<!--                    {{ orderDto.completedDate | date: 'dd/MM/yyyy HH:mm:ss' }}-->
+<!--                  </div>-->
+<!--                </div>-->
+                <div class="col-6 col-sm-12" *ngIf="orderDto.cancelDate != null">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-calendar-days" style="stroke-width:2.5;"></span>
+                    <h6 class="mb-0">Ngày hủy</h6>
+                  </div>
+                  <div class="ms-4">
+                    {{ orderDto.cancelDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-dollar-sign" style="stroke-width:2.5;">  </span>
+                    <h6 class="mb-0">Phương thức thanh toán</h6>
+                  </div>
+                  <div class="ms-4">
+                    <span *ngIf="orderDto.paymentMethod === 0">Thanh toán khi nhận hàng</span>
+                    <span *ngIf="orderDto.paymentMethod === 1">VNPay</span>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="me-2 fa-solid fa-hand-holding-dollar" data-feather="dollar-sign"
+                          style="stroke-width:2.5;">  </span>
+                    <h6 class="mb-0">Trạng thái thanh toán</h6>
+                  </div>
+                  <div class="ms-4">
+                    <span *ngIf="orderDto.paymentStatus">Đã thanh toán</span>
+                    <span *ngIf="!orderDto.paymentStatus">Chưa thanh toán</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Trạng thái đơn hàng</h3>
+              <ng-select class="mb-2" [(ngModel)]="orderDto.orderStatus"
+                         [disabled]="orderStatusInDb === 5 || orderStatusInDb === 6">
+                <ng-option *ngFor="let item of orderStatus" [value]="item.id" [disabled]="item.id == 4">
+                  {{ item.name }}
+                </ng-option>
+              </ng-select>
+              <small>
+                <span class="text-danger" *ngIf="orderDto.orderStatus == null">
+                  Trạng thái đơn hàng không được để trống
+                </span>
+              </small>
+              <textarea class="form-control mb-4" rows="3" [(ngModel)]="orderDto.cancelReason"
+                        [class.d-none]="orderDto.orderStatus !== 6" placeholder="Lý do hủy"></textarea>
+              <div class="text-end mt-4">
+                <a class="btn btn-phoenix-secondary me-2" href="/admin/order">
+                  Quay lại
+                </a>
+                <button class="btn btn-primary" (click)="updateOrderStatus()"
+                        [disabled]="orderDto.orderStatus === null || orderStatusInDb === 5 || orderStatusInDb === 6">
+                  Cập nhật
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

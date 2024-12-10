@@ -1,0 +1,629 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\users\\profiletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\users\\profiletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\subscriptions\\subscriptiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\subscriptions\\subscriptiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\subscriptions\\subscriptionerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\subscriptions\\subscriptionerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\subscriptions\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\subscriptions\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\gyms\\gymerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\gyms\\gymerrors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\gyms\\gym.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\gyms\\gym.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\common\\idomainevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\common\\idomainevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\common\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\common\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\common\\interfaces\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\common\\interfaces\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\admins\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\admins\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.domain\\admins\\events\\subscriptiondeletedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{993DA7FE-4496-4598-94BD-E7B7B90EEE00}|src\\GymManagement.Domain\\GymManagement.Domain.csproj|solutionrelative:src\\gymmanagement.domain\\admins\\events\\subscriptiondeletedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\depedencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\depedencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\iassemblymarker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\iassemblymarker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\depedencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\depedencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\gymmanagement.db||{25834150-CD7E-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\gymmanagement.db||{25834150-CD7E-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\profiles\\commands\\createadminprofile\\createadminprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\profiles\\commands\\createadminprofile\\createadminprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\services\\currentuserprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\services\\currentuserprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\controllers\\subscriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\controllers\\subscriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\controllers\\gymscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\controllers\\gymscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.api\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC71E45C-44E8-46B1-AE81-C56A87D78B75}|src\\GymManagement.Api\\GymManagement.Api.csproj|solutionrelative:src\\gymmanagement.api\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gyms\\queries\\getgym\\getgymquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gyms\\queries\\getgym\\getgymquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gyms\\commands\\creategym\\creategymcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gyms\\commands\\creategym\\creategymcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gyms\\commands\\creategym\\creategymcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gyms\\commands\\creategym\\creategymcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gyms\\commands\\creategym\\creategymcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gyms\\commands\\creategym\\creategymcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\common\\behaviors\\authorizationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\common\\behaviors\\authorizationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\common\\interfaces\\icurrentuserprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\common\\interfaces\\icurrentuserprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\common\\interfaces\\iadminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\common\\interfaces\\iadminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gyms\\events\\subscriptiondeletedeventhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gyms\\events\\subscriptiondeletedeventhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gyms\\commands\\addtrainer\\addtrainercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gyms\\commands\\addtrainer\\addtrainercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|c:\\users\\tien0\\downloads\\compressed\\nsth-deep.dive.clean.architecture.net\\nsth-deep.dive.clean.architecture.net\\code\\7-end\\src\\gymmanagement.application\\gymmanagement.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3B4DC4D1-F96F-452E-BD30-776CB1B6C0F8}|src\\GymManagement.Application\\GymManagement.Application.csproj|solutionrelative:src\\gymmanagement.application\\gymmanagement.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProfileType.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Users\\ProfileType.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Users\\ProfileType.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Users\\ProfileType.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Users\\ProfileType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:54.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SubscriptionType.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Subscriptions\\SubscriptionType.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Subscriptions\\SubscriptionType.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Subscriptions\\SubscriptionType.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Subscriptions\\SubscriptionType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:53.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SubscriptionErrors.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Subscriptions\\SubscriptionErrors.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Subscriptions\\SubscriptionErrors.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Subscriptions\\SubscriptionErrors.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Subscriptions\\SubscriptionErrors.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:51.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Subscription.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Subscriptions\\Subscription.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Subscriptions\\Subscription.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Subscriptions\\Subscription.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Subscriptions\\Subscription.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:50.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GymErrors.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Gyms\\GymErrors.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Gyms\\GymErrors.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Gyms\\GymErrors.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Gyms\\GymErrors.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:46.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Gym.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Gyms\\Gym.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Gyms\\Gym.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Gyms\\Gym.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Gyms\\Gym.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:45.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IDomainEvent.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Common\\IDomainEvent.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Common\\IDomainEvent.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Common\\IDomainEvent.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Common\\IDomainEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:44.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Common\\Entity.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Common\\Entity.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Common\\Entity.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Common\\Entity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:43.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IPasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Common\\Interfaces\\IPasswordHasher.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Common\\Interfaces\\IPasswordHasher.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Common\\Interfaces\\IPasswordHasher.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Common\\Interfaces\\IPasswordHasher.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:40.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Admins\\Admin.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Admins\\Admin.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Admins\\Admin.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Admins\\Admin.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:33.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SubscriptionDeletedEvent.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Admins\\Events\\SubscriptionDeletedEvent.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Domain\\Admins\\Events\\SubscriptionDeletedEvent.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Domain\\Admins\\Events\\SubscriptionDeletedEvent.cs",
+              "RelativeToolTip": "src\\GymManagement.Domain\\Admins\\Events\\SubscriptionDeletedEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:32.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DepedencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\DepedencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\DepedencyInjection.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\DepedencyInjection.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\DepedencyInjection.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:08:07.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Program.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Program.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:50.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAssemblyMarker.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\IAssemblyMarker.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\IAssemblyMarker.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\IAssemblyMarker.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\IAssemblyMarker.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:48.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DepedencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\DepedencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\DepedencyInjection.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\DepedencyInjection.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\DepedencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:46.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GymManagement.db",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\GymManagement.db",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\GymManagement.db",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\GymManagement.db",
+              "RelativeToolTip": "src\\GymManagement.Api\\GymManagement.db",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI8SURBVDhPdVNLT1NBGD3a23gJKaJUwsIEUaMoL2NsGyqxoCYEDRuKi0ZW3WHkL0D8BWqkJsLKQlsX9bGrNhqqRKRutCVp1BhFEiUxVyVx0Ud67/DN3EcvsZ7ck2/uN9/MnDkzswsGYrEY0xgD0zQwippGbabBzPEoORxb5Upl6Nrk5HsxiBeaWFhcZKqqWqxyVmuMx\u002BOsUCiwufn5P3dmI6eMYdhtRLEKh0pRVTlVQZpIkMPtduOs398sSdKSSBBqE5hqKJBovW1B/49Go0ilUihXys0iQZCMKPbMYQ7OrmaRza7C6/PBRxwbC4oe8gGzkYio4bApIPOM9v3oAppa23DpSgiyuw13781ZfRwa1ZqwJuAu86p8Lg//uQA6D7cjt/IKPUcOof/CMNbyearSp6HjEpHjHxMzmSU0NjTgUTKJUCiEJw\u002BT2OtyUT5DKkXJjtPbqYAQGBxEsVhEcHwciUQCl0dHsf5tA1W5CS\u002BWV1AqlcivOlvQZTH09vTi9fJLfF7fgGcggHcfvkBpbEc4HIay/zje5tb\u002Bp0A3kXPi6gSUzR94/CCON3Qaw8da8PzrX4x0HsD3n7/rm1i7BxSJHq8X16em4OnrRvrTL1zscOHpRwVn\u002Brrqmyjugf4JmjjdfQL7lALSz9Locm7hYGuL5ReHTUFNlgAVcVV7ZBlDA/0IjpzHyaMdkOnfXmvzgN9BenGSQ6dTgrMORa1tC9ZzvnnrNm2NjKROvjI/KhGNnFiA2vozZ7gxM01jgW0oG0\u002BFgH6cagAAAABJRU5ErkJggg==",
+              "WhenOpened": "2024-12-07T03:07:42.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CreateAdminProfileCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Profiles\\Commands\\CreateAdminProfile\\CreateAdminProfileCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Profiles\\Commands\\CreateAdminProfile\\CreateAdminProfileCommandHandler.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Profiles\\Commands\\CreateAdminProfile\\CreateAdminProfileCommandHandler.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Profiles\\Commands\\CreateAdminProfile\\CreateAdminProfileCommandHandler.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAIA0wBIAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:31.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CurrentUserProvider.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Services\\CurrentUserProvider.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Services\\CurrentUserProvider.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Services\\CurrentUserProvider.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Services\\CurrentUserProvider.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:11.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SubscriptionsController.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\SubscriptionsController.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Controllers\\SubscriptionsController.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\SubscriptionsController.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Controllers\\SubscriptionsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:10.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "RoomsController.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\RoomsController.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Controllers\\RoomsController.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\RoomsController.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Controllers\\RoomsController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:07:07.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ProfilesController.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\ProfilesController.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Controllers\\ProfilesController.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\ProfilesController.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Controllers\\ProfilesController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAA1wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:06:55.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowC0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:06:17.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ApiController.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\ApiController.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Controllers\\ApiController.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\ApiController.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Controllers\\ApiController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:06:01.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GymsController.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\GymsController.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Api\\Controllers\\GymsController.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Api\\Controllers\\GymsController.cs",
+              "RelativeToolTip": "src\\GymManagement.Api\\Controllers\\GymsController.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAIAwwEQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:39.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "GetGymQuery.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Queries\\GetGym\\GetGymQuery.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Gyms\\Queries\\GetGym\\GetGymQuery.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Queries\\GetGym\\GetGymQuery.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Gyms\\Queries\\GetGym\\GetGymQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:34.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CreateGymCommand.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommand.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommand.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommand.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:28.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CreateGymCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandHandler.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandHandler.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandHandler.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:24.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CreateGymCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandValidator.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandValidator.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Gyms\\Commands\\CreateGym\\CreateGymCommandValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:22.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AuthorizationBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Common\\Behaviors\\AuthorizationBehavior.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Common\\Behaviors\\AuthorizationBehavior.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Common\\Behaviors\\AuthorizationBehavior.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Common\\Behaviors\\AuthorizationBehavior.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:15.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ICurrentUserProvider.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Common\\Interfaces\\ICurrentUserProvider.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Common\\Interfaces\\ICurrentUserProvider.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Common\\Interfaces\\ICurrentUserProvider.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Common\\Interfaces\\ICurrentUserProvider.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:12.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IAdminRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Common\\Interfaces\\IAdminRepository.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Common\\Interfaces\\IAdminRepository.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Common\\Interfaces\\IAdminRepository.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Common\\Interfaces\\IAdminRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:05:09.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:04:57.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "SubscriptionDeletedEventHandler.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Events\\SubscriptionDeletedEventHandler.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Gyms\\Events\\SubscriptionDeletedEventHandler.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Events\\SubscriptionDeletedEventHandler.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Gyms\\Events\\SubscriptionDeletedEventHandler.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:04:33.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "AddTrainerCommand.cs",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\AddTrainer\\AddTrainerCommand.cs",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\Gyms\\Commands\\AddTrainer\\AddTrainerCommand.cs",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\Gyms\\Commands\\AddTrainer\\AddTrainerCommand.cs",
+              "RelativeToolTip": "src\\GymManagement.Application\\Gyms\\Commands\\AddTrainer\\AddTrainerCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T03:04:26.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "GymManagement.Application",
+              "DocumentMoniker": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\GymManagement.Application.csproj",
+              "RelativeDocumentMoniker": "src\\GymManagement.Application\\GymManagement.Application.csproj",
+              "ToolTip": "C:\\Users\\tien0\\Downloads\\Compressed\\NSTH-Deep.Dive.Clean.Architecture.NET\\NSTH-Deep.Dive.Clean.Architecture.NET\\code\\7-end\\src\\GymManagement.Application\\GymManagement.Application.csproj",
+              "RelativeToolTip": "src\\GymManagement.Application\\GymManagement.Application.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-07T03:04:22.638Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

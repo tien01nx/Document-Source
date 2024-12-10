@@ -1,0 +1,39 @@
+﻿@model ShoppingCartVM
+
+<h2> Thông tin đơn hàng</h2>
+<form method="post">
+<section class="cart_area section-padding">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Giá tiền</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                  </tbody> 
+                </table>
+                <div class="checkout_btn_inner float-right">
+                    <a class="btn" href="/Customer/Home">Tiếp tục mua sắm</a>
+                    <a class="btn checkout_btn" asp-action="Summary" asp-controller="Cart" asp-area="Customer">Mua hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</form>
+
+
+
+@section Scripts{
+    <script src="~/js/cart.js"></script>
+}

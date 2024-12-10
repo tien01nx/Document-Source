@@ -1,0 +1,16 @@
+<nav class="ecommerce-navbar navbar-expand navbar-light bg-body-emphasis justify-content-between">
+  <div class="container-small d-flex flex-between-center justify-content-center  scrollbar-overlay"
+       data-navbar="data-navbar">
+    <ul class="p-3 navbar-nav align-items-center justify-content-center">
+      <li class="nav-item" data-nav-item="data-nav-item">
+        <a class="nav-link fs-8 ps-0" href="/" [class.active]="isExactRoute('/')">Trang chủ</a>
+      </li>
+      <li class="nav-item" data-nav-item="data-nav-item" *ngFor="let category of categoryDto">
+        <a class="nav-link fs-8" href="danh-muc/{{category.slug}}"
+           [class.active]="isExactRoute('/danh-muc/' + category.slug)">
+          {{ category.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

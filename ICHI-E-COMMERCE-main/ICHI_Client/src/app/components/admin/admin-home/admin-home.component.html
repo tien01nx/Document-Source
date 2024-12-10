@@ -1,0 +1,603 @@
+<div class="row gy-3 mb-4 justify-content-between">
+  <div class="col-xxl-12">
+    <h2 class="mb-2 text-body-emphasis">TỔNG QUAN</h2>
+    <h5 class="text-body-tertiary fw-semibold mb-4">
+      Sự phát triển kinh doanh của cửa hàng
+    </h5>
+
+    <div class="row g-3 mb-3">
+      <!-- <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="d-flex d-sm-block justify-content-between">
+              <div class="border-bottom-sm border-translucent mb-sm-4">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="d-flex align-items-center icon-wrapper-sm shadow-primary-100"
+                    style="transform: rotate(-7.45deg)"
+                  >
+                    <span
+                      class="far fa-box-check text-primary fs-7 z-1 ms-2"
+                    ></span>
+                  </div>
+                  <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">
+                    Outgoing call
+                  </p>
+                </div>
+                <p class="text-primary mt-2 fs-6 fw-bold mb-0 mb-sm-4">
+                  {{ moneyTotal?.totalOrder }}
+                  <span class="fs-8 text-body lh-lg">Số lượng đơn hàng</span>
+                </p>
+              </div>
+              <div
+                class="d-flex flex-column justify-content-center flex-between-end d-sm-block text-end text-sm-start"
+              >
+                <span
+                  class="badge badge-phoenix badge-phoenix-success fs-10 mb-2"
+                  >+24.5%</span
+                >
+                <p class="mb-0 fs-9 text-body-tertiary">Than Yesterday</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-3">
+        <div class="card h-75">
+          <div class="card-body">
+            <div class="d-flex d-sm-block justify-content-between">
+              <div class="border-translucent mb-sm-4">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="d-flex align-items-center icon-wrapper-sm shadow-primary-100"
+                    style="transform: rotate(-7.45deg)"
+                  >
+                    <span
+                      class="far fa-box-check text-primary fs-7 z-1 ms-2"
+                    ></span>
+                  </div>
+                  <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">
+                    Outgoing call
+                  </p>
+                </div>
+                <p class="text-primary mt-2 fs-6 fw-bold mb-0 mb-sm-4">
+                  {{ moneyTotal?.totalOrder }}
+                  <span class="fs-8 text-body lh-lg">Số lượng đơn hàng</span>
+                </p>
+              </div>
+              <!-- <div
+                class="d-flex flex-column justify-content-center flex-between-end d-sm-block text-end text-sm-start"
+              >
+                <span
+                  class="badge badge-phoenix badge-phoenix-success fs-10 mb-2"
+                  >+24.5%</span
+                >
+                <p class="mb-0 fs-9 text-body-tertiary">Than Yesterday</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-3">
+        <div class="card h-75">
+          <div class="card-body">
+            <div class="d-flex d-sm-block justify-content-between">
+              <div class="border-translucent mb-sm-4">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="d-flex align-items-center icon-wrapper-sm shadow-info-100"
+                    style="transform: rotate(-7.45deg)"
+                  >
+                    <span
+                      class="fad fa-cart-arrow-down text-info fs-7 z-1 ms-2"
+                    ></span>
+                  </div>
+                  <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">
+                    Outgoing call
+                  </p>
+                </div>
+                <p class="text-info mt-2 fs-6 fw-bold mb-0 mb-sm-4">
+                  {{ moneyTotal?.totalOrderAmount | number : "1.0-0" }}
+                  <span class="fs-8 text-body lh-lg">Doanh số đặt hàng</span>
+                </p>
+              </div>
+              <!-- <div
+                class="d-flex flex-column justify-content-center flex-between-end d-sm-block text-end text-sm-start"
+              >
+                <span
+                  class="badge badge-phoenix badge-phoenix-warning fs-10 mb-2"
+                  >+24.5%</span
+                >
+                <p class="mb-0 fs-9 text-body-tertiary">Than last week</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-3">
+        <div class="card h-75">
+          <div class="card-body">
+            <div class="d-flex d-sm-block justify-content-between">
+              <div class="border-translucent mb-sm-4">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="d-flex align-items-center icon-wrapper-sm shadow-info-100"
+                    style="transform: rotate(-7.45deg)"
+                  >
+                    <span
+                      class="fad fa-money-check-edit-alt text-info fs-7 z-1 ms-2"
+                    ></span>
+                  </div>
+                  <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">
+                    Outgoing call
+                  </p>
+                </div>
+                <p class="text-info mt-2 fs-6 fw-bold mb-0 mb-sm-4">
+                  {{ moneyTotal?.totalRealAmount | number : "1.0-0" }}
+                  <span class="fs-8 text-body lh-lg">Thực thu</span>
+                </p>
+              </div>
+              <!-- <div
+                class="d-flex flex-column justify-content-center flex-between-end d-sm-block text-end text-sm-start"
+              >
+                <span
+                  class="badge badge-phoenix badge-phoenix-warning fs-10 mb-2"
+                  >+24.5%</span
+                >
+                <p class="mb-0 fs-9 text-body-tertiary">Than last week</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-3">
+        <div class="card h-75">
+          <div class="card-body">
+            <div class="d-flex d-sm-block justify-content-between">
+              <div class="border-translucent mb-sm-4">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="d-flex align-items-center icon-wrapper-sm shadow-info-100"
+                    style="transform: rotate(-7.45deg)"
+                  >
+                    <span
+                      class="fal fa-money-check-alt text-info fs-7 z-1 ms-2"
+                    ></span>
+                  </div>
+                  <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">
+                    Outgoing call
+                  </p>
+                </div>
+                <p class="text-info mt-2 fs-6 fw-bold mb-0 mb-sm-4">
+                  {{ moneyTotal?.totalRemainAmount | number : "1.0-0" }}
+                  <span class="fs-8 text-body lh-lg">Còn phải thu</span>
+                </p>
+              </div>
+              <!-- <div
+                class="d-flex flex-column justify-content-center flex-between-end d-sm-block text-end text-sm-start"
+              >
+                <span
+                  class="badge badge-phoenix badge-phoenix-warning fs-10 mb-2"
+                  >+24.5%</span
+                >
+                <p class="mb-0 fs-9 text-body-tertiary">Than last week</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col-xxl-6 mb-6">
+    <h3>Contacts Created</h3>
+    <p class="text-body-tertiary mb-1">Payment received across all channels</p>
+    <div
+      class="echart-contacts-created"
+      style="min-height: 270px; width: 100%"
+    ></div>
+  </div> -->
+  <div class="col-12 col-xxl-12 mb-3 mb-sm-0">
+    <div class="row">
+      <div class="col-sm-7 col-md-8 col-xxl-8 mb-md-3 mb-lg-0">
+        <h3>Tổng các trạng thái đơn hàng trên hệ thống</h3>
+        <p class="text-body-tertiary"></p>
+        <div class="row g-0">
+          <div class="col-6 col-xl-4">
+            <div
+              class="d-flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100 border-1 border-bottom border-end border-translucent"
+            >
+              <div class="d-flex align-items-center mb-1">
+                <span
+                  class="fas fa-square fs-11 me-2 text-primary"
+                  data-fa-transform="up-2"
+                ></span
+                ><span class="mb-0 fs-9 text-body">Chưa xác nhận</span>
+              </div>
+              <h3
+                class="fw-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3"
+              >
+                {{ orderStatus?.pending }}
+              </h3>
+            </div>
+          </div>
+          <div class="col-6 col-xl-4">
+            <div
+              class="d-flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100 border-1 border-bottom border-end-md-0 border-end-xl border-translucent"
+            >
+              <div class="d-flex align-items-center mb-1">
+                <span
+                  class="fas fa-square fs-11 me-2 text-success"
+                  data-fa-transform="up-2"
+                ></span
+                ><span class="mb-0 fs-9 text-body">Đã xác nhận</span>
+              </div>
+              <h3
+                class="fw-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3"
+              >
+                {{ orderStatus?.onHold }}
+              </h3>
+            </div>
+          </div>
+          <div class="col-6 col-xl-4">
+            <div
+              class="d-flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100 border-1 border-bottom border-end border-end-md border-end-xl-0 border-translucent"
+            >
+              <div class="d-flex align-items-center mb-1">
+                <span
+                  class="fas fa-square fs-11 me-2 text-info"
+                  data-fa-transform="up-2"
+                ></span
+                ><span class="mb-0 fs-9 text-body">Chờ lấy hàng</span>
+              </div>
+              <h3
+                class="fw-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3"
+              >
+                {{ orderStatus?.waitingForPickup }}
+              </h3>
+            </div>
+          </div>
+          <div class="col-6 col-xl-4">
+            <div
+              class="d-flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100 border-1 border-end-xl border-bottom border-bottom-xl-0 border-translucent"
+            >
+              <div class="d-flex align-items-center mb-1">
+                <span
+                  class="fas fa-square fs-11 me-2 text-info-light"
+                  data-fa-transform="up-2"
+                ></span
+                ><span class="mb-0 fs-9 text-body">Đang giao hàng</span>
+              </div>
+              <h3
+                class="fw-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3"
+              >
+                {{ orderStatus?.waitingForDelivery }}
+              </h3>
+            </div>
+          </div>
+          <div class="col-6 col-xl-4">
+            <div
+              class="d-flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100 border-1 border-end"
+            >
+              <div class="d-flex align-items-center mb-1">
+                <span
+                  class="fas fa-square fs-11 me-2 text-danger-lighter"
+                  data-fa-transform="up-2"
+                ></span
+                ><span class="mb-0 fs-9 text-body">Đã giao</span>
+              </div>
+              <h3
+                class="fw-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3"
+              >
+                {{ orderStatus?.delivered }}
+              </h3>
+            </div>
+          </div>
+          <div class="col-6 col-xl-4">
+            <div
+              class="d-flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100 border-1"
+            >
+              <div class="d-flex align-items-center mb-1">
+                <span
+                  class="fas fa-square fs-11 me-2 text-warning-light"
+                  data-fa-transform="up-2"
+                ></span
+                ><span class="mb-0 fs-9 text-body">Đã hủy</span>
+              </div>
+              <h3
+                class="fw-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3"
+              >
+                {{ orderStatus?.cancelled }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5 col-md-4 col-xxl-4 my-3 my-sm-0">
+        <div
+          class="position-relative d-flex flex-center mb-sm-4 mb-xl-0 echart-contact-by-source-container mt-sm-7 mt-lg-4 mt-xl-0 pt-4"
+        >
+          <div class="echart-contact-by-source">
+            <canvas id="piechart">{{ piechart }}</canvas>
+            <h3 class="mb-0 text-primary-dark fw-bolder"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xxl-6">
+    <div class="row align-items-start justify-content-between mb-4 g-3">
+      <div class="col-8">
+        <h3>Doanh thu của cửa hàng</h3>
+      </div>
+
+      <div class="col-3">
+        <select
+          class="form-select"
+          (change)="onYearSelect($event)"
+          [(ngModel)]="chooseYear"
+        >
+          <option *ngFor="let item of years" [value]="item">{{ item }}</option>
+        </select>
+      </div>
+      <button
+        class="col-1 pt-2"
+        *ngIf="intDisplay === 1"
+        (click)="clickDownloadExcel()"
+      >
+        <i class="fal fa-folder-download"></i>
+      </button>
+
+      <div class="scrollbar overflow-hidden-y">
+        <div class="btn-group position-static" role="group">
+          <div class="btn-group position-static text-nowrap">
+            <button
+              class="btn btn-phoenix-secondary px-7 flex-shrink-0"
+              type="button"
+              data-bs-toggle="dropdown"
+              data-boundary="window"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-bs-reference="parent"
+            >
+              {{ titleShow }} <span class="fas fa-angle-down ms-5"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" (click)="showDisplay(1)">Doanh thu</a>
+              </li>
+              <!-- <li>
+                <a class="dropdown-item" (click)="showDisplay(2)">Lợi nhuận</a>
+              </li> -->
+              <li>
+                <a class="dropdown-item" (click)="showDisplay(3)">Nhập hàng</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="showDisplay(2)">Tồn kho</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="min-height: 400px; width: 100%" *ngIf="show">
+      <canvas id="lineChart"></canvas>
+    </div>
+
+    <div
+      class="border-top border-bottom-0"
+      id="dealForecastTable"
+      *ngIf="intDisplay === 3"
+    >
+      <div class="table-responsive scrollbar">
+        <table class="table fs-9 mb-0">
+          <thead>
+            <tr>
+              <th
+                class="sort border-end border-translucent align-middle text-end px-3 text-uppercase text-body-tertiary"
+                scope="col"
+                style="width: 10%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span class="fas fa-square fs-11 text-primary me-2"></span>
+                </div>
+                <span class="mb-0 fs-9">Tháng</span>
+              </th>
+              <th
+                class="sort border-end border-translucent align-middle text-end px-3 text-uppercase text-body-tertiary"
+                scope="col"
+                style="width: 20%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span class="fas fa-square fs-11 text-success me-2"></span
+                  ><span class="mb-0 fs-9">Tổng số lượng</span>
+                </div>
+              </th>
+              <th
+                class="sort align-middle text-end ps-3 text-uppercase text-body-tertiary"
+                style="width: 20%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span
+                    class="fas fa-square fs-11 text-info me-2"
+                    data-fa-transform="up-2"
+                  ></span
+                  ><span class="mb-0 fs-9">Tổng tiền</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="list" id="table-deal-forecast-body">
+            <tr
+              class="hover-actions-trigger btn-reveal-trigger position-static"
+              *ngFor="let item of dataInventoryModel"
+            >
+              <td
+                class="appointment border-end border-translucent align-middle white-space-nowrap text-end fw-semibold text-body py-2 px-3"
+              >
+                {{ item?.month }}
+              </td>
+              <td
+                class="closed-won border-end border-translucent align-middle white-space-nowrap text-end fw-semibold text-body py-2 px-3"
+              >
+                {{ item?.totalQuantity }}
+              </td>
+              <td
+                class="contact-sent border-end-0 align-middle white-space-nowrap text-end fw-semibold text-body ps-3 py-2"
+              >
+                {{ item?.totalPrice }}
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody class="list" id="table-deal-forecast-body">
+            <tr
+              class="hover-actions-trigger btn-reveal-trigger position-static"
+              *ngIf="productdto.length == 0"
+            >
+              <td
+                colspan="5 "
+                class="text-capitalize text-center text-warning-dark"
+              >
+                <span>Không có bản ghi nào</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xxl-6 mb-6 gy-0 gy-xxl-3">
+    <div class="row align-items-start justify-content-between mb-4 g-3">
+      <div class="col-auto">
+        <h3>Top các sản phẩm đã chạy<span class="fw-semibold"></span></h3>
+        <p class="text-body-tertiary mb-1"></p>
+      </div>
+      <div class="col-12 col-sm-4">
+        <input
+          class="form-control"
+          type="month"
+          [value]="yearNow + '-' + monthNow"
+          (input)="changeDateBestSeller($event)"
+        />
+      </div>
+    </div>
+
+    <h4 class="mt-4 mb-5">Thông tin chi tiết</h4>
+
+    <div class="border-top border-bottom-0" id="dealForecastTable">
+      <div class="table-responsive scrollbar">
+        <table class="table fs-9 mb-0">
+          <thead>
+            <tr>
+              <th
+                class="white-space-nowrap align-middle ps-0 text-uppercase text-body-tertiary"
+                scope="col"
+                style="width: 10%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span class="fas fa-square fs-11 text-primary me-2"></span>
+                </div>
+                <span class="mb-0 fs-9">Tên sản phẩm</span>
+              </th>
+              <th
+                class="sort border-end border-translucent align-middle text-end px-3 text-uppercase text-body-tertiary"
+                style="width: 20%; min-width: 95px"
+              ></th>
+              <th
+                class="border-end border-translucent align-middle text-end px-3 text-uppercase text-body-tertiary"
+                style="width: 20%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span
+                    class="fas fa-square fs-11 text-primary-light me-2"
+                    data-fa-transform="up-2"
+                  ></span
+                  ><span class="mb-0 fs-9">Đơn giá</span>
+                </div>
+              </th>
+              <th
+                class="sort border-end border-translucent align-middle text-end px-3 text-uppercase text-body-tertiary"
+                scope="col"
+                style="width: 20%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span class="fas fa-square fs-11 text-success me-2"></span
+                  ><span class="mb-0 fs-9">Lên đơn</span>
+                </div>
+              </th>
+              <th
+                class="sort align-middle text-end ps-3 text-uppercase text-body-tertiary"
+                style="width: 20%; min-width: 100px"
+              >
+                <div class="d-inline-flex flex-center">
+                  <span
+                    class="fas fa-square fs-11 text-info me-2"
+                    data-fa-transform="up-2"
+                  ></span
+                  ><span class="mb-0 fs-9">Đá bán</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="list" id="table-deal-forecast-body">
+            <tr
+              class="hover-actions-trigger btn-reveal-trigger position-static"
+              *ngFor="let item of productdto"
+            >
+              <td
+                class="contact border-translucent align-middle white-space-nowrap py-2 ps-0 px-3"
+              >
+                <!-- <a class="fw-semibold" href="#!">1000</a> -->
+                <img
+                  class="img-fluid"
+                  src="{{ Environment.apiBaseRoot }}{{
+                    item.productImages[0].imagePath
+                  }}"
+                  alt=""
+                />
+              </td>
+              <td
+                class="appointment border-end border-translucent align-middle white-space-nowrap text-end fw-semibold text-body py-2 px-3"
+              >
+                {{ item.product.productName }}
+              </td>
+              <td
+                class="qualified border-end border-translucent align-middle white-space-nowrap text-end fw-semibold text-body py-2 px-3"
+              >
+                {{ item.product.price }}
+              </td>
+              <td
+                class="closed-won border-end border-translucent align-middle white-space-nowrap text-end fw-semibold text-body py-2 px-3"
+              >
+                {{ item.quantityOnnTheOrder }}
+              </td>
+              <td
+                class="contact-sent border-end-0 align-middle white-space-nowrap text-end fw-semibold text-body ps-3 py-2"
+              >
+                {{ item.quantitySold }}
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody class="list" id="table-deal-forecast-body">
+            <tr
+              class="hover-actions-trigger btn-reveal-trigger position-static"
+              *ngIf="productdto.length == 0"
+            >
+              <td
+                colspan="5 "
+                class="text-capitalize text-center text-warning-dark"
+              >
+                <span>Không có bản ghi nào</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,375 @@
+<nav class="mb-2" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+    <li class="breadcrumb-item">Quản lý danh mục</li>
+    <li class="breadcrumb-item active">thông tin khuyến mãi</li>
+  </ol>
+</nav>
+<div class="mb-9">
+  <div class="row g-3 mb-4">
+    <div class="col-auto">
+      <h2 class="mb-0">Danh sách thông tin khuyến mãi</h2>
+    </div>
+  </div>
+  <div id="promotion">
+    <div class="mb-4">
+      <div class="row g-3">
+        <div class="col-auto">
+          <div class="search-box">
+            <form class="position-relative">
+              <input
+                class="form-control search-input search"
+                type="text"
+                placeholder="Tìm kiếm thông tin khuyến mãi"
+                name="searchTemp"
+                (input)="search()"
+                [(ngModel)]="searchTemp"
+              />
+              <span class="fas fa-search search-box-icon"></span>
+            </form>
+          </div>
+        </div>
+        <div class="col-auto ms-auto">
+          <button class="btn btn-primary" (click)="insertPromotion()">
+            <span class="fas fa-plus me-2"></span>Thêm thông tin khuyến mãi
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1"
+    >
+      <div class="table-responsive scrollbar mx-n1 px-1">
+        <table class="table fs--1 mb-0">
+          <thead>
+            <tr>
+              <th
+                class="white-space-nowrap fs--1 align-middle ps-0"
+                style="width: 5%"
+              >
+                <div class="form-check mb-0 fs-0">
+                  <input
+                    class="form-check-input"
+                    id="checkbox-bulk-products-select"
+                    type="checkbox"
+                    (input)="toggleSelectAll()"
+                  />
+                </div>
+              </th>
+              <th
+                class="sort white-space-nowrap align-middle ps-4"
+                scope="col"
+                style="width: 30%"
+                (click)="sortByField('PromotionCode')"
+              >
+                Tên khuyến mãi
+                <label
+                  [class.d-none]="
+                    SortBy === 'PromotionCode' &&
+                    (sortDir === 'DESC' || sortDir === 'ASC')
+                  "
+                >
+                  <span class="fas fa-sort align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="
+                    SortBy !== 'PromotionCode' || sortDir !== 'ASC'
+                  "
+                >
+                  <span class="fas fa-sort-up align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="
+                    SortBy !== 'PromotionCode' || sortDir !== 'DESC'
+                  "
+                >
+                  <span class="fas fa-sort-down align-middle fs-9"></span>
+                </label>
+              </th>
+
+              <th
+                class="sort align-middle ps-4"
+                scope="col"
+                style="width: 120px"
+                (click)="sortByField('Discount')"
+              >
+                Triết khấu
+                <label
+                  [class.d-none]="
+                    SortBy === 'Discount' &&
+                    (sortDir === 'DESC' || sortDir === 'ASC')
+                  "
+                >
+                  <span class="fas fa-sort align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'Discount' || sortDir !== 'ASC'"
+                >
+                  <span class="fas fa-sort-up align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'Discount' || sortDir !== 'DESC'"
+                >
+                  <span class="fas fa-sort-down align-middle fs-9"></span>
+                </label>
+              </th>
+
+              <th
+                class="sort align-middle ps-4"
+                scope="col"
+                style="width: 150px"
+                (click)="sortByField('StartTime')"
+              >
+                Ngày bắt đầu
+                <label
+                  [class.d-none]="
+                    SortBy === 'StartTime' &&
+                    (sortDir === 'DESC' || sortDir === 'ASC')
+                  "
+                >
+                  <span class="fas fa-sort align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'StartTime' || sortDir !== 'ASC'"
+                >
+                  <span class="fas fa-sort-up align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'StartTime' || sortDir !== 'DESC'"
+                >
+                  <span class="fas fa-sort-down align-middle fs-9"></span>
+                </label>
+              </th>
+              <th
+                class="sort align-middle ps-4"
+                scope="col"
+                (click)="sortByField('EndTime')"
+                style="width: 150px"
+              >
+                Ngày kết thúc
+                <label
+                  [class.d-none]="
+                    SortBy === 'EndTime' &&
+                    (sortDir === 'DESC' || sortDir === 'ASC')
+                  "
+                >
+                  <span class="fas fa-sort align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'EndTime' || sortDir !== 'ASC'"
+                >
+                  <span class="fas fa-sort-up align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'EndTime' || sortDir !== 'DESC'"
+                >
+                  <span class="fas fa-sort-down align-middle fs-9"></span>
+                </label>
+              </th>
+              <th
+                class="sort align-middle ps-4"
+                scope="col"
+                style="width: 160px"
+                (click)="sortByField('BankName')"
+              >
+                Trạng thái
+                <label
+                  [class.d-none]="
+                    SortBy === 'BankName' &&
+                    (sortDir === 'DESC' || sortDir === 'ASC')
+                  "
+                >
+                  <span class="fas fa-sort align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'BankName' || sortDir !== 'ASC'"
+                >
+                  <span class="fas fa-sort-up align-middle fs-9"></span>
+                </label>
+                <label
+                  [class.d-none]="SortBy !== 'BankName' || sortDir !== 'DESC'"
+                >
+                  <span class="fas fa-sort-down align-middle fs-9"></span>
+                </label>
+              </th>
+
+              <th
+                class="sort text-end align-middle pe-0 ps-4"
+                scope="col"
+                style="width: 50px"
+              ></th>
+            </tr>
+          </thead>
+          <tbody class="list" id="promotion-table-body">
+            <tr *ngIf="paginationModel.content.length <= 0">
+              <td colspan="7" class="text-center">
+                <span class="fs-7">Không có dữ liệu</span>
+              </td>
+            </tr>
+            <tr
+              class="position-static"
+              *ngFor="let promotion of paginationModel.content"
+            >
+              <td class="fs--1 align-middle">
+                <div class="form-check mb-0 fs-0">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [value]="promotion.id"
+                    [checked]="selectAll"
+                  />
+                </div>
+              </td>
+              <td class="align-middle white-space-nowrap text-700 ps-4">
+                {{ promotion.promotionName }}
+              </td>
+              <td class="align-middle text-600 ps-11">
+                {{ promotion.discount | number : "1.0-0" }}
+              </td>
+
+              <td class="align-middle text-600 ps-6">
+                {{ promotion.startTime | date : "dd/MM/yyyy" }}
+              </td>
+              <td class="align-middle text-600 ps-6">
+                {{ promotion.endTime | date : "dd/MM/yyyy" }}
+              </td>
+              <td class="align-middle text-600 ps-4">
+                {{ promotion.isActive ? "Đang hoạt động" : "Hết chương trình" }}
+              </td>
+              <!-- <td class="align-middle white-space-nowrap text-600 ps-3">
+                {{ promotion.modifiedDate | date : "dd/MM/yyyy" }}
+              </td> -->
+              <td
+                class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger"
+              >
+                <div class="font-sans-serif btn-reveal-trigger position-static">
+                  <button
+                    class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    data-boundary="window"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-bs-reference="parent"
+                  >
+                    <span class="fas fa-ellipsis-h fs--2"></span>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end py-2">
+                    <button
+                      (click)="promotionDetail(promotion.id)"
+                      class="dropdown-item"
+                    >
+                      Cập nhật
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button
+                      class="dropdown-item text-danger"
+                      (click)="delete(promotion.id)"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row align-items-center py-2 pe-0 fs--1">
+        <div class="col-auto d-flex">
+          <label>
+            <select
+              class="form-select form-select-sm form-select-solid"
+              name="sizeSelected"
+              [(ngModel)]="paginationModel.pageSize"
+              (change)="changePageSize(paginationModel.pageSize)"
+            >
+              <option value="5" [selected]="paginationModel.pageSize == 5">
+                5
+              </option>
+              <option value="10" [selected]="paginationModel.pageSize == 10">
+                10
+              </option>
+              <option value="25" [selected]="paginationModel.pageSize == 25">
+                25
+              </option>
+              <option value="50" [selected]="paginationModel.pageSize == 50">
+                50
+              </option>
+              <option value="100" [selected]="paginationModel.pageSize == 100">
+                100
+              </option>
+            </select>
+          </label>
+        </div>
+        <div class="col-auto d-flex">
+          <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900">
+            Hiển thị {{ paginationModel.firstElementOnPage }} đến
+            {{ paginationModel.lastElementOnPage }}
+            <span class="text-body-tertiary"> của </span
+            >{{ paginationModel.totalElements }} danh mục
+          </p>
+        </div>
+        <div class="col-auto ms-auto d-flex">
+          <button
+            type="button"
+            class="page-link"
+            (click)="changePageNumber(1)"
+            [class.disabled]="paginationModel.pageNumber <= 1"
+          >
+            <span class="fas fa-angle-double-left"></span>
+          </button>
+          <button
+            type="button"
+            class="page-link"
+            (click)="changePageNumber(paginationModel.pageNumber - 1)"
+            [class.disabled]="paginationModel.pageNumber <= 1"
+          >
+            <span class="fas fa-angle-left"></span>
+          </button>
+          <ul class="mb-0 pagination">
+            <li
+              class="page-item"
+              *ngFor="
+                let i of Utils.getVisiblePages(
+                  paginationModel.pageNumber,
+                  paginationModel.totalPages,
+                  5
+                )
+              "
+              [class.active]="i === paginationModel.pageNumber"
+            >
+              <button
+                type="button"
+                class="page-link"
+                (click)="changePageNumber(i)"
+              >
+                {{ i }}
+              </button>
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="page-link"
+            (click)="changePageNumber(paginationModel.pageNumber + 1)"
+            [class.disabled]="
+              paginationModel.pageNumber >= paginationModel.totalPages
+            "
+          >
+            <span class="fas fa-angle-right"></span>
+          </button>
+          <button
+            type="button"
+            class="page-link"
+            (click)="changePageNumber(paginationModel.totalPages)"
+            [class.disabled]="
+              paginationModel.pageNumber >= paginationModel.totalPages
+            "
+          >
+            <span class="fas fa-angle-double-right"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

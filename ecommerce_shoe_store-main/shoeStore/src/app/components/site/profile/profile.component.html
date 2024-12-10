@@ -1,0 +1,186 @@
+<section class="pt-5 pb-9">
+  <div class="container-small">
+    <nav class="mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cá nhân</li>
+      </ol>
+    </nav>
+    <div class="row align-items-center justify-content-between g-3 mb-4">
+      <div class="col-auto">
+        <h2 class="mb-0">Cá nhân</h2>
+      </div>
+      <div class="col-auto">
+        <div class="row g-2 g-sm-3">
+          <div class="col-auto">
+            <button class="btn btn-phoenix-secondary" type="button" data-bs-toggle="modal"
+              data-bs-target="#tooltipModal2" (click)="openModal()">
+              <span class="fas fa-key me-2"></span>Cập nhật thông tin
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mb-6">
+      <div class="col-12 col-lg-12">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="border-bottom border-dashed pb-4">
+              <div class="row align-items-center g-3 g-sm-5 text-center text-sm-start">
+                <div class="col-12 col-sm-auto flex-1 text-center">
+                  <h3 class="mb-5 mt-2">{{profile?.name}}</h3>
+                  <p class="text-body-secondary mt-3 fs-9">
+                    <i class="fas fa-phone me-2"></i>
+                    <span *ngIf="profile?.phone !== null">{{profile?.phone}}</span>
+                    <span *ngIf="profile?.phone === null" class="text-black-50">Trống</span>
+                  </p>
+                  <p class="text-body-secondary mt-3 fs-9">
+                    <i class="fas fa-envelope me-2"></i>
+                    <span class="lh-1" *ngIf="profile?.email !== null">{{profile?.email}}</span>
+                    <span class="lh-1" *ngIf="profile?.email === null" class="text-black-50">Trống</span>
+                  </p>
+                  <p class="text-body-secondary mt-3 fs-9">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    <span class="lh-1"
+                      *ngIf="profile?.city !== null && profile?.district !== null && profile?.ward !== null && profile?.addressDetail !== null">
+                      {{profile?.addressDetail}}, {{profile?.ward}}, {{profile?.district}}, {{profile?.city}}
+                    </span>
+                    <span class="lh-1"
+                      *ngIf="profile?.city === null && profile?.district === null && profile?.ward === null && profile?.addressDetail === null"
+                      class="text-black-50">Trống</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-between-center pt-4">
+              <div>
+                <h6 class="mb-3 text-body-secondary">Tổng tiền đã chi</h6>
+                <h4 class="fs-8 text-body-highlight mb-0">{{profile?.totalSpent | currencyFormat:'VND'}}</h4>
+              </div>
+              <div class="text-end">
+                <h6 class="mb-3 text-body-secondary">Đặt hàng lần cuối</h6>
+                <h4 class="fs-8 text-body-highlight mb-0">{{ profile?.lastOrderText ? profile?.lastOrderText : 'Chưa có đơn hàng' }}</h4>
+              </div>
+              <div class="text-end">
+                <h6 class="mb-3 text-body-secondary">Tổng số đơn hàng</h6>
+                <h4 class="fs-8 text-body-highlight mb-0">{{profile?.totalOrder}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end of .container-->
+</section>
+
+<div class="modal fade" id="tooltipModal2" tabindex="-1" aria-labelledby="tooltipModalLabel" style="display: none;"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tooltipModalLabel">Cập nhật thông tin</h5>
+        <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close" (click)="resetText()">
+          <span class="fas fa-times fs-9"></span>
+        </button>
+      </div>
+      <form [formGroup]="profileForm" (submit)="onSubmit()">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label class="form-label">Họ tên</label>
+                <span class="text-danger"> *</span>
+                <input class="form-control" id="name" type="text" placeholder="Họ tên" formControlName="name" />
+                <div class="label-error mt-1" *ngIf="profileForm['controls']['name'].dirty">
+                  <span *ngIf="profileForm['controls']['name'].errors?.['required']">
+                    <small>Trường bắt buộc.</small>
+                  </span>
+                  <span *ngIf="profileForm['controls']['name'].errors?.['maxlength']">
+                    <small>Tối đa 30 ký tự.</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label class="form-label">Số điện thoại</label>
+                <span class="text-danger"> *</span>
+                <input class="form-control" id="phone" type="text" placeholder="Số điện thoại"
+                  formControlName="phone" />
+                <div class="label-error mt-1" *ngIf="profileForm['controls']['phone'].dirty">
+                  <span *ngIf="profileForm['controls']['phone'].errors?.['required']">
+                    <small>Trường bắt buộc.</small>
+                  </span>
+                  <span *ngIf="profileForm['controls']['phone'].errors?.['pattern']">
+                    <small>Số điện thoại không đúng định dạng.</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tỉnh/Thành phố</label><span class="text-danger">
+              *</span>
+            <ng-select placeholder="Tỉnh/Thành phố" formControlName="city">
+              <ng-option *ngFor="let city of cities2" [value]="city.name">
+                {{ city.name }}
+              </ng-option>
+            </ng-select>
+            <div class="label-error mt-1" *ngIf="profileForm['controls']['city'].dirty">
+              <div *ngIf="profileForm.get('city')?.hasError('required')" class="text-danger">
+                <small>Trường bắt buộc.</small>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Quận/Huyện</label>
+            <span class="text-danger"> *</span>
+            <ng-select placeholder="Quận/Huyện" formControlName="district">
+              <ng-option *ngFor="let district of districts" [value]="district.name">
+                {{ district.name }}
+              </ng-option>
+            </ng-select>
+            <div class="label-error mt-1" *ngIf="profileForm['controls']['district'].dirty">
+              <span *ngIf="profileForm['controls']['district'].errors?.['required']">
+                <small>Trường bắt buộc.</small>
+              </span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phường/Xã/Thị trấn</label>
+            <span class="text-danger"> *</span>
+            <ng-select placeholder="Phường/Xã/Thị trấn" formControlName="ward">
+              <ng-option *ngFor="let ward of wards" [value]="ward.name">
+                {{ ward.name }}
+              </ng-option>
+            </ng-select>
+            <div class="label-error mt-1" *ngIf="profileForm['controls']['ward'].dirty">
+              <span *ngIf="profileForm['controls']['ward'].errors?.['required']">
+                <small>Trường bắt buộc.</small>
+              </span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Số nhà, Tên đường </label>
+            <span class="text-danger"> *</span>
+            <input class="form-control" id="address" type="text" placeholder="Số nhà, Tên đường"
+              formControlName="addressDetail" />
+            <div class="label-error mt-1" *ngIf="profileForm['controls']['addressDetail'].dirty">
+              <span *ngIf="profileForm['controls']['addressDetail'].errors?.['required']">
+                <small>Trường bắt buộc.</small>
+              </span>
+              <span *ngIf="profileForm['controls']['addressDetail'].errors?.['maxlength']">
+                <small>Tối đa 100 ký tự.</small>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit" [disabled]="profileForm.invalid">Cập nhật</button>
+          <button class="btn btn-phoenix-secondary" type="button" data-bs-dismiss="modal" #btnCloseModal
+            (click)="resetText()">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

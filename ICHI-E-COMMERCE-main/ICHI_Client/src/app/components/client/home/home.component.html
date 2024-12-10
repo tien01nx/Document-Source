@@ -1,0 +1,340 @@
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="py-0">
+  <div class="container-small">
+    <div class="scrollbar">
+      <div class="d-flex justify-content-between">
+        <div *ngFor="let item of CategoryProduct">
+          <a class="icon-nav-item">
+            <div
+              class="icon-container mb-2 m-auto"
+              (click)="productFilter(item.categoryName)"
+            >
+              <!-- <span class="fs-4 uil uil-star text-warning"></span> -->
+              <img
+                class="w-100 rounded-3"
+                [src]="getImageUrl(item.categoryName)"
+                alt=""
+              />
+            </div>
+            <p class="nav-label">{{ item.categoryName }}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+<!-- ============================================-->
+
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="py-0 px-xl-3">
+  <div class="container px-xl-0 px-xxl-3">
+    <div class="row g-3 mb-9 mt-2">
+      <div class="col-12">
+        <div class="swiper-theme-container products-slider">
+          <div class="swiper swiper-container theme-slider">
+            <swiper-container appSwiper [config]="swiperBannerConfig">
+              <swiper-slide *ngFor="let banner of banners">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div
+                      class="position-relative text-decoration-none product-card h-100"
+                    >
+                      <div
+                        class="d-flex flex-column justify-content-between h-100"
+                      >
+                        <img class="rounded-3" [src]="banner" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+            </swiper-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <div class="d-flex flex-between-center mb-3">
+        <h3>Sản phẩm khuyến mãi</h3>
+      </div>
+
+      <div class="swiper-theme-container products-slider">
+        <div class="swiper swiper-container theme-slider">
+          <swiper-container appSwiper [config]="swiperNewestConfig">
+            <swiper-slide *ngFor="let data of products">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div
+                    class="position-relative text-decoration-none product-card h-100"
+                  >
+                    <div
+                      class="d-flex flex-column justify-content-between h-100"
+                    >
+                      <div>
+                        <div
+                          class="border border-1 border-translucent position-relative mb-3"
+                          style="min-height: 245px; background: #ffffff"
+                        >
+                          <div class="p-1">
+                            <span
+                              *ngIf="data.product.quantity <= 0"
+                              class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto"
+                              >Hết hàng</span
+                            >
+                          </div>
+                          <div class="image-container">
+                            <img
+                              class="img-fluid image-custom"
+                              src="{{ Environment.apiBaseRoot }}{{
+                                data.productImages[0].imagePath
+                              }}"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <a
+                          class="stretched-link"
+                          [routerLink]="['/product_detail', data.product.id]"
+                        >
+                          <h6 class="mb-2 lh-sm line-clamp-3 product-name">
+                            {{ data?.product?.productName }}
+                          </h6>
+                        </a>
+                      </div>
+
+                      <div class="d-flex align-items-center mb-1">
+                        <p
+                          class="me-2 text-body text-decoration-line-through mb-0"
+                          *ngIf="data.product.discount > 0"
+                        >
+                          {{ data?.product?.price | number : "1.0-0" }}
+                        </p>
+                        <h3 class="fw-normal mb-0 text-danger">
+                          {{
+                            data.product.price *
+                              (1 - data.product.discount / 100)
+                              | number : "1.0-0"
+                          }}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+        <div class="swiper-nav">
+          <div class="swiper-button-next">
+            <span class="fas fa-chevron-right nav-icon"></span>
+          </div>
+          <div class="swiper-button-prev">
+            <span class="fas fa-chevron-left nav-icon"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <div class="d-flex flex-between-center mb-3">
+        <h3>Sản phẩm bán chạy</h3>
+      </div>
+      <div class="swiper-theme-container products-slider">
+        <div class="swiper swiper-container theme-slider">
+          <swiper-container appSwiper [config]="swiperNewestConfig1">
+            <swiper-slide *ngFor="let data of productdto">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div
+                    class="position-relative text-decoration-none product-card h-100"
+                  >
+                    <div
+                      class="d-flex flex-column justify-content-between h-100"
+                    >
+                      <div>
+                        <div
+                          class="border border-1 border-translucent position-relative mb-3"
+                          style="min-height: 245px; background: #ffffff"
+                        >
+                          <div class="p-1">
+                            <span
+                              *ngIf="data.product.quantity <= 0"
+                              class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto"
+                              >Hết hàng</span
+                            >
+                          </div>
+                          <div class="image-container">
+                            <img
+                              class="img-fluid image-custom"
+                              src="{{ Environment.apiBaseRoot }}{{
+                                data.productImages[0].imagePath
+                              }}"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <a
+                          class="stretched-link"
+                          [routerLink]="['/product_detail', data.product.id]"
+                        >
+                          <h6 class="mb-2 lh-sm line-clamp-3 product-name">
+                            {{ data?.product?.productName }}
+                          </h6>
+                        </a>
+                      </div>
+
+                      <div class="d-flex align-items-center mb-1">
+                        <p
+                          class="me-2 text-body text-decoration-line-through mb-0"
+                          *ngIf="data.product.discount > 0"
+                        >
+                          {{ data?.product?.price | number : "1.0-0" }}
+                        </p>
+                        <h3 class="fw-normal mb-0 text-danger">
+                          {{
+                            data.product.price *
+                              (1 - data.product.discount / 100)
+                              | number : "1.0-0"
+                          }}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+        <div class="swiper-nav">
+          <div class="swiper-button-next1">
+            <span class="fas fa-chevron-right nav-icon"></span>
+          </div>
+          <div class="swiper-button-prev1">
+            <span class="fas fa-chevron-left nav-icon"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <div class="d-flex flex-between-center mb-3">
+        <h3>Sản phẩm mới</h3>
+      </div>
+      <div class="swiper-theme-container products-slider">
+        <div class="swiper swiper-container theme-slider">
+          <swiper-container appSwiper [config]="swiperNewestConfig1">
+            <swiper-slide *ngFor="let data of dataProductNew">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div
+                    class="position-relative text-decoration-none product-card h-100"
+                  >
+                    <div
+                      class="d-flex flex-column justify-content-between h-100"
+                    >
+                      <div>
+                        <div
+                          class="border border-1 border-translucent position-relative mb-3"
+                          style="min-height: 245px; background: #ffffff"
+                        >
+                          <div class="p-1">
+                            <span
+                              *ngIf="data.product.quantity <= 0"
+                              class="badge text-bg-danger fs-9 fw-normal pt-1 pb-1 ms-auto"
+                              >Hết hàng</span
+                            >
+                          </div>
+                          <div class="image-container">
+                            <img
+                              class="img-fluid image-custom"
+                              src="{{ Environment.apiBaseRoot }}{{
+                                data.productImages[0].imagePath
+                              }}"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <a
+                          class="stretched-link"
+                          [routerLink]="['/product_detail', data.product.id]"
+                        >
+                          <h6 class="mb-2 lh-sm line-clamp-3 product-name">
+                            {{ data?.product?.productName }}
+                          </h6>
+                        </a>
+                      </div>
+
+                      <div class="d-flex align-items-center mb-1">
+                        <p
+                          class="me-2 text-body text-decoration-line-through mb-0"
+                          *ngIf="data.product.discount > 0"
+                        >
+                          {{ data?.product?.price | number : "1.0-0" }}
+                        </p>
+                        <h3 class="fw-normal mb-0 text-danger">
+                          {{
+                            data.product.price *
+                              (1 - data.product.discount / 100)
+                              | number : "1.0-0"
+                          }}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+        <div class="swiper-nav">
+          <div class="swiper-button-next1">
+            <span class="fas fa-chevron-right nav-icon"></span>
+          </div>
+          <div class="swiper-button-prev1">
+            <span class="fas fa-chevron-left nav-icon"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row flex-center mb-15 mt-11 gy-6">
+      <div class="col-auto">
+        <img
+          class="d-dark-none"
+          src="../../../assets/img/spot-illustrations/light_30.png"
+          alt=""
+          width="305"
+        /><img
+          class="d-light-none"
+          src="../../../assets/img/spot-illustrations/dark_30.png"
+          alt=""
+          width="305"
+        />
+      </div>
+      <div class="col-auto">
+        <div class="text-center text-lg-start">
+          <h3 class="text-body-highlight mb-2">
+            <span class="fw-semibold">Want to have the </span>ultimate
+            <br class="d-md-none" />customer experience?
+          </h3>
+          <h1 class="display-3 fw-semibold mb-4">
+            Become a <span class="text-primary fw-bolder">member </span>today!
+          </h1>
+          <a
+            class="btn btn-lg btn-primary px-7"
+            href="../../../pages/authentication/simple/sign-up.html"
+            >Sign up <span class="fas fa-chevron-right ms-2 fs-9"></span>
+          </a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+<!-- ============================================-->
